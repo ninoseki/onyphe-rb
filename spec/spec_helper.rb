@@ -24,8 +24,11 @@ RSpec.configure do |config|
 end
 
 def myip
-  Net::HTTP.get(URI("https://api.ipify.org"))
+  @myip ||= Net::HTTP.get(URI("https://api.ipify.org"))
 end
+
+# just for memoize the my ip
+myip
 
 VCR.configure do |config|
   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
