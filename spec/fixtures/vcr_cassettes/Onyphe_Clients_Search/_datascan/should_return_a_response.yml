@@ -1,0 +1,38 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.onyphe.io/api/search/datascan/product:%22HTTP+Server%22+port:443+os:Windows+tls:true?apikey=<API_KEY>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - www.onyphe.io
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 16 Nov 2018 10:01:23 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '119'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"count":0,"error":0,"max_page":1,"myip":"103.75.118.111","page":1,"results":[],"status":"ok","took":"0.042","total":0}'
+    http_version: 
+  recorded_at: Fri, 16 Nov 2018 10:01:33 GMT
+recorded_with: VCR 4.0.0
