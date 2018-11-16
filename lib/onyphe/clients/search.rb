@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "cgi"
+require "addressable/uri"
 
 module Onyphe
   module Clients
@@ -53,7 +53,7 @@ module Onyphe
           [k, v].join(":")
         end.join(" ")
 
-        CGI.escape s
+        Addressable::URI.encode s
       end
     end
   end
