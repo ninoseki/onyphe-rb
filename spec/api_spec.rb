@@ -5,7 +5,7 @@ RSpec.describe Onyphe::API, :vcr do
 
   describe "#ctl" do
     it "should return a response" do
-      res = subject.ctl("github.com")
+      res = subject.ctl("okcpride.org")
       expect(res.error).to eq(0)
     end
   end
@@ -47,7 +47,7 @@ RSpec.describe Onyphe::API, :vcr do
 
   describe "#onionscan" do
     it "should return a response" do
-      res = subject.onionscan("3fyb44wdhnd2ghhl.onion")
+      res = subject.onionscan("mh7mkfvezts5j6yu.onion")
       expect(res.error).to eq(0)
     end
   end
@@ -68,7 +68,7 @@ RSpec.describe Onyphe::API, :vcr do
 
   describe "#sniffer" do
     it "should return a response" do
-      res = subject.sniffer("1.1.1.1")
+      res = subject.sniffer("217.138.28.194")
       expect(res.error).to eq(0)
     end
   end
@@ -82,7 +82,7 @@ RSpec.describe Onyphe::API, :vcr do
 
   describe "#threatlist" do
     it "should return a response" do
-      res = subject.threatlist("1.1.1.1")
+      res = subject.threatlist("206.81.18.195")
       expect(res.error).to eq(0)
     end
   end

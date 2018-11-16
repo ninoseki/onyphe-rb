@@ -6,9 +6,10 @@ require 'coveralls'
 Coveralls.wear!
 
 require "dotenv/load"
+require "net/http"
+require "onyphe"
 require "rspec"
 require "vcr"
-require "onyphe"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -22,9 +23,14 @@ RSpec.configure do |config|
   end
 end
 
+def myip
+  Net::HTTP.get(URI("https://api.ipify.org"))
+end
+
 VCR.configure do |config|
   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
   config.configure_rspec_metadata!
   config.hook_into :webmock
   config.filter_sensitive_data("<API_KEY>") { ENV["ONYPHE_API_KEY"] }
+  config.filter_sensitive_data("<MY_IP>") { myip }
 end

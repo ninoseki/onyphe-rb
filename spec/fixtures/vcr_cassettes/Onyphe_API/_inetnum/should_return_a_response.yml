@@ -23,7 +23,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Fri, 16 Nov 2018 09:45:49 GMT
+      - Fri, 16 Nov 2018 11:38:22 GMT
       Content-Type:
       - application/json;charset=UTF-8
       Content-Length:
@@ -32,7 +32,7 @@ http_interactions:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"count":10,"error":0,"max_page":7,"myip":"103.75.118.111","page":1,"results":[{"@category":"inetnum","@timestamp":"2018-11-11T02:35:20.000Z","@type":"doc","asn":"AS13335","country":"AU","information":["Asia
+      string: '{"count":10,"error":0,"max_page":7,"myip":"<MY_IP>","page":1,"results":[{"@category":"inetnum","@timestamp":"2018-11-11T02:35:20.000Z","@type":"doc","asn":"AS13335","country":"AU","information":["Asia
         Pacific Network Information Centre","Regional Internet Registry for the Asia-Pacific
         Region","6 Cordelia Street","PO Box 3646","South Brisbane, QLD 4101","Australia"],"ipv6":"false","location":"-33.4940,143.2104","netname":"APNIC-AP","organization":"Cloudflare,
         Inc.","seen_date":"2018-11-11","source":"APNIC","subnet":"1.0.0.0\/8"},{"@category":"inetnum","@timestamp":"2018-11-11T02:35:20.000Z","@type":"doc","asn":"AS13335","country":"AU","information":["APNIC
@@ -62,7 +62,7 @@ http_interactions:
         Inc.","seen_date":"2018-10-14","source":"APNIC","subnet":"1.0.0.0\/8"},{"@category":"inetnum","@timestamp":"2018-10-14T01:36:06.000Z","@type":"doc","asn":"AS13335","country":"AU","information":["APNIC
         and Cloudflare DNS Resolver project","Routed globally by AS13335\/Cloudflare","Research
         prefix for APNIC Labs"],"ipv6":"false","location":"-33.4940,143.2104","netname":"APNIC-LABS","organization":"Cloudflare,
-        Inc.","seen_date":"2018-10-14","source":"APNIC","subnet":"1.1.1.0\/24"}],"status":"ok","took":"0.125","total":66}'
+        Inc.","seen_date":"2018-10-14","source":"APNIC","subnet":"1.1.1.0\/24"}],"status":"ok","took":"0.067","total":66}'
     http_version: 
-  recorded_at: Fri, 16 Nov 2018 09:45:59 GMT
+  recorded_at: Fri, 16 Nov 2018 11:38:31 GMT
 recorded_with: VCR 4.0.0
