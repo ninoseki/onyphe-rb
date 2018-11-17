@@ -2,6 +2,7 @@
 
 require "json"
 require "net/https"
+require "uri"
 
 module Onyphe
   class Client
