@@ -1,5 +1,6 @@
 # Onyphe-rb
 
+[![Gem Version](https://badge.fury.io/rb/onyphe.svg)](https://badge.fury.io/rb/onyphe)
 [![Build Status](https://travis-ci.org/ninoseki/onyphe-rb.svg?branch=master)](https://travis-ci.org/ninoseki/onyphe-rb)
 [![Coverage Status](https://coveralls.io/repos/github/ninoseki/onyphe-rb/badge.svg?branch=master)](https://coveralls.io/github/ninoseki/onyphe-rb?branch=master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/c4afca9e0ff94d11a53332c0598b868f)](https://www.codacy.com/app/ninoseki/onyphe-rb)
