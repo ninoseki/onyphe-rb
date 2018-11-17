@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.onyphe.io/api/search/resolver/ip:124.108.0.0/16?apikey=<API_KEY>&page=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - www.onyphe.io
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sat, 17 Nov 2018 02:10:30 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '4120'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"count":10,"error":0,"max_page":857,"myip":"<MY_IP>","page":1,"results":[{"@category":"resolver","@timestamp":"2018-11-17T02:03:14.000Z","@type":"doc","asn":"AS23661","city":"Tokyo","country":"JP","domain":"iwate-job-matching.jp","forward":"www.iwate-job-matching.jp","host":"www","ip":"124.108.39.132","ipv6":"false","location":"35.6850,139.7514","organization":"CLARA
+        ONLINE, Inc.","seen_date":"2018-11-17","source":"urlscan","subnet":"124.108.32.0\/21","tld":"jp","type":"forward"},{"@category":"resolver","@timestamp":"2018-11-17T02:02:36.000Z","@type":"doc","asn":"AS23661","city":"Tokyo","country":"JP","domain":"astf-kha.jp","forward":"www.astf-kha.jp","host":"www","ip":"124.108.33.33","ipv6":"false","location":"35.6850,139.7514","organization":"CLARA
+        ONLINE, Inc.","seen_date":"2018-11-17","source":"urlscan","subnet":"124.108.32.0\/21","tld":"jp","type":"forward"},{"@category":"resolver","@timestamp":"2018-11-17T01:17:06.000Z","@type":"doc","asn":"AS23661","city":"Tokyo","country":"JP","domain":"co.jp","forward":"www.kujira.co.jp","host":"www","ip":"124.108.33.40","ipv6":"false","location":"35.6850,139.7514","organization":"CLARA
+        ONLINE, Inc.","seen_date":"2018-11-17","source":"urlscan","subdomains":["kujira.co.jp"],"subnet":"124.108.32.0\/21","tld":"jp","type":"forward"},{"@category":"resolver","@timestamp":"2018-11-17T00:28:43.000Z","@type":"doc","asn":"AS23661","city":"Tokyo","country":"JP","domain":"hanes.jp","forward":"www.hanes.jp","host":"www","ip":"124.108.39.168","ipv6":"false","location":"35.6850,139.7514","organization":"CLARA
+        ONLINE, Inc.","seen_date":"2018-11-17","source":"urlscan","subnet":"124.108.32.0\/21","tld":"jp","type":"forward"},{"@category":"resolver","@timestamp":"2018-11-17T00:26:23.000Z","@type":"doc","asn":"AS10229","country":"HK","domain":"dmoz.org","forward":"dmoz.org","ip":"124.108.115.100","ipv6":"false","location":"22.2500,114.1667","organization":"Internet
+        Content Provider","seen_date":"2018-11-17","source":"urlscan","subnet":"124.108.112.0\/20","tld":"org","type":"forward"},{"@category":"resolver","@timestamp":"2018-11-16T23:22:41.000Z","@type":"doc","asn":"AS23661","city":"Tokyo","country":"JP","domain":"co.jp","forward":"www.kujira.co.jp","host":"www","ip":"124.108.33.40","ipv6":"false","location":"35.6850,139.7514","organization":"CLARA
+        ONLINE, Inc.","seen_date":"2018-11-16","source":"urlscan","subdomains":["kujira.co.jp"],"subnet":"124.108.32.0\/21","tld":"jp","type":"forward"},{"@category":"resolver","@timestamp":"2018-11-16T23:15:46.000Z","@type":"doc","asn":"AS23661","city":"Tokyo","country":"JP","domain":"bjn.jp","forward":"www.bjn.jp","host":"www","ip":"124.108.37.72","ipv6":"false","location":"35.6850,139.7514","organization":"CLARA
+        ONLINE, Inc.","seen_date":"2018-11-16","source":"urlscan","subnet":"124.108.32.0\/21","tld":"jp","type":"forward"},{"@category":"resolver","@timestamp":"2018-11-16T22:46:05.000Z","@type":"doc","asn":"AS10229","country":"HK","domain":"jokes4u.com","forward":"www.jokes4u.com","host":"www","ip":"124.108.115.100","ipv6":"false","location":"22.2500,114.1667","organization":"Internet
+        Content Provider","seen_date":"2018-11-16","source":"urlscan","subnet":"124.108.112.0\/20","tld":"com","type":"forward"},{"@category":"resolver","@timestamp":"2018-11-16T22:38:54.000Z","@type":"doc","asn":"AS10229","country":"HK","domain":"yahoo.com","host":"w2","ip":"124.108.115.103","ipv6":"false","location":"22.2500,114.1667","organization":"Internet
+        Content Provider","reverse":"w2.src3.vip.tw1.yahoo.com","seen_date":"2018-11-16","source":"pastries","subdomains":["tw1.yahoo.com","vip.tw1.yahoo.com","src3.vip.tw1.yahoo.com"],"subnet":"124.108.112.0\/20","tld":"com","type":"reverse"},{"@category":"resolver","@timestamp":"2018-11-16T22:38:51.000Z","@type":"doc","asn":"AS10229","country":"HK","domain":"huffpost.com","forward":"huffpost.com","ip":"124.108.115.103","ipv6":"false","location":"22.2500,114.1667","organization":"Internet
+        Content Provider","seen_date":"2018-11-16","source":"pastries","subnet":"124.108.112.0\/20","tld":"com","type":"forward"}],"status":"ok","took":"0.013","total":8570}'
+    http_version: 
+  recorded_at: Sat, 17 Nov 2018 02:10:40 GMT
+recorded_with: VCR 4.0.0

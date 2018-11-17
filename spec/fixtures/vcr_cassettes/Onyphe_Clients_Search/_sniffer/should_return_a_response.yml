@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.onyphe.io/api/search/sniffer/ip:14.164.0.0/14?apikey=<API_KEY>&page=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - www.onyphe.io
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sat, 17 Nov 2018 02:09:24 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '4584'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"count":10,"error":0,"max_page":35,"myip":"<MY_IP>","page":1,"results":[{"@category":"sniffer","@timestamp":"2018-11-16T07:49:20.000Z","@type":"doc","asn":"AS45899","country":"VN","destport":"445","domain":"vnpt.vn","host":"static","ip":"14.164.135.185","ipv6":"false","location":"16.0000,106.0000","organization":"VNPT
+        Corp","os":"Windows","reverse":"static.vnpt.vn","seen_date":"2018-11-16","srcport":"51606","subnet":"14.164.0.0\/14","tag":["hasreverse","tcpsyn"],"tld":"vn","transport":"tcp","type":"tcpsyn"},{"@category":"sniffer","@timestamp":"2018-11-16T07:40:38.000Z","@type":"doc","asn":"AS45899","country":"VN","destport":"445","domain":"vnpt.vn","host":"static","ip":"14.166.251.181","ipv6":"false","location":"16.0000,106.0000","organization":"VNPT
+        Corp","os":"Windows","reverse":"static.vnpt.vn","seen_date":"2018-11-16","srcport":"57145","subnet":"14.164.0.0\/14","tag":["hasreverse","tcpsyn"],"tld":"vn","transport":"tcp","type":"tcpsyn"},{"@category":"sniffer","@timestamp":"2018-11-16T07:30:14.000Z","@type":"doc","asn":"AS45899","country":"VN","destport":"445","domain":"vnpt.vn","host":"static","ip":"14.166.19.157","ipv6":"false","location":"16.0000,106.0000","organization":"VNPT
+        Corp","os":"Windows","reverse":"static.vnpt.vn","seen_date":"2018-11-16","srcport":"16792","subnet":"14.164.0.0\/14","tag":["hasreverse","tcpsyn"],"tld":"vn","transport":"tcp","type":"tcpsyn"},{"@category":"sniffer","@timestamp":"2018-11-16T07:13:16.000Z","@type":"doc","asn":"AS45899","city":"Can
+        Tho","country":"VN","destport":"445","domain":"vnpt.vn","host":"static","ip":"14.164.231.147","ipv6":"false","location":"10.0333,105.7833","organization":"VNPT
+        Corp","os":"Windows","reverse":"static.vnpt.vn","seen_date":"2018-11-16","srcport":"57079","subnet":"14.164.0.0\/14","tag":["hasreverse","tcpsyn"],"tld":"vn","transport":"tcp","type":"tcpsyn"},{"@category":"sniffer","@timestamp":"2018-11-16T07:11:19.000Z","@type":"doc","asn":"AS45899","country":"VN","destport":"445","domain":"vnpt.vn","host":"static","ip":"14.167.205.87","ipv6":"false","location":"16.0000,106.0000","organization":"VNPT
+        Corp","os":"Windows","reverse":"static.vnpt.vn","seen_date":"2018-11-16","srcport":"63342","subnet":"14.164.0.0\/14","tag":["hasreverse","tcpsyn"],"tld":"vn","transport":"tcp","type":"tcpsyn"},{"@category":"sniffer","@timestamp":"2018-11-16T07:06:52.000Z","@type":"doc","asn":"AS45899","country":"VN","destport":"445","domain":"vnpt.vn","host":"static","ip":"14.166.95.84","ipv6":"false","location":"16.0000,106.0000","organization":"VNPT
+        Corp","os":"Windows","reverse":"static.vnpt.vn","seen_date":"2018-11-16","srcport":"55730","subnet":"14.164.0.0\/14","tag":["hasreverse","tcpsyn"],"tld":"vn","transport":"tcp","type":"tcpsyn"},{"@category":"sniffer","@timestamp":"2018-11-16T07:02:02.000Z","@type":"doc","asn":"AS45899","city":"Ho
+        Chi Minh City","country":"VN","destport":"445","domain":"vnpt.vn","host":"static","ip":"14.167.78.254","ipv6":"false","location":"10.8142,106.6438","organization":"VNPT
+        Corp","os":"Windows","reverse":"static.vnpt.vn","seen_date":"2018-11-16","srcport":"54517","subnet":"14.164.0.0\/14","tag":["hasreverse","tcpsyn"],"tld":"vn","transport":"tcp","type":"tcpsyn"},{"@category":"sniffer","@timestamp":"2018-11-16T06:57:02.000Z","@type":"doc","asn":"AS45899","city":"Hanoi","country":"VN","destport":"445","domain":"vnpt.vn","host":"static","ip":"14.166.167.134","ipv6":"false","location":"21.0333,105.8500","organization":"VNPT
+        Corp","os":"Windows","reverse":"static.vnpt.vn","seen_date":"2018-11-16","srcport":"64041","subnet":"14.164.0.0\/14","tag":["hasreverse","tcpsyn"],"tld":"vn","transport":"tcp","type":"tcpsyn"},{"@category":"sniffer","@timestamp":"2018-11-16T06:40:16.000Z","@type":"doc","asn":"AS45899","country":"VN","destport":"445","domain":"vnpt.vn","host":"static","ip":"14.167.110.116","ipv6":"false","location":"16.0000,106.0000","organization":"VNPT
+        Corp","os":"Windows","reverse":"static.vnpt.vn","seen_date":"2018-11-16","srcport":"59274","subnet":"14.164.0.0\/14","tag":["hasreverse","tcpsyn"],"tld":"vn","transport":"tcp","type":"tcpsyn"},{"@category":"sniffer","@timestamp":"2018-11-15T09:57:29.000Z","@type":"doc","asn":"AS45899","country":"VN","destport":"445","domain":"vnpt.vn","host":"static","ip":"14.166.113.161","ipv6":"false","location":"16.0000,106.0000","organization":"VNPT
+        Corp","os":"Windows","reverse":"static.vnpt.vn","seen_date":"2018-11-15","srcport":"56390","subnet":"14.164.0.0\/14","tag":["hasreverse","tcpsyn"],"tld":"vn","transport":"tcp","type":"tcpsyn"}],"status":"ok","took":"0.007","total":346}'
+    http_version: 
+  recorded_at: Sat, 17 Nov 2018 02:09:34 GMT
+recorded_with: VCR 4.0.0
