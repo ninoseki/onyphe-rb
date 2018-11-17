@@ -25,6 +25,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "addressable", "~> 2.5"
+  spec.add_dependency "thor", "~> 0.19"
 
   spec.add_development_dependency "bundler", "~> 1.17"
   spec.add_development_dependency "coveralls", "~> 0.8"

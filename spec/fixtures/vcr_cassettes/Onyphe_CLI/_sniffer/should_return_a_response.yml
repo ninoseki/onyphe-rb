@@ -1,0 +1,58 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.onyphe.io/api/sniffer/217.138.28.194?apikey=<API_KEY>&page=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - www.onyphe.io
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sat, 17 Nov 2018 23:45:02 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '5716'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"count":10,"error":0,"max_page":3,"myip":"<MY_IP>","page":1,"results":[{"@category":"sniffer","@timestamp":"2018-11-17T19:07:10.000Z","@type":"doc","asn":"AS20952","city":"London","country":"GB","data":"o\\x8f\\x00\\x00\\x00\\x01\\x00\\x00\\x00\\x00\\x00\\x00
+        CKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\\x00\\x00!\\x00\\x01","datamd5":"81c1469560e9443dae00121498e29fb2","destport":"137","ip":"217.138.28.194","ipv6":"false","location":"51.5085,-0.1257","organization":"Venus
+        Business Communications Limited","seen_date":"2018-11-17","srcport":"137","subnet":"217.138.0.0\/16","tag":["netbiosns","udpdata"],"transport":"udp","type":"udpdata"},{"@category":"sniffer","@timestamp":"2018-11-15T00:35:37.000Z","@type":"doc","asn":"AS20952","city":"London","country":"GB","data":"<\\xbe\\x00\\x00\\x00\\x01\\x00\\x00\\x00\\x00\\x00\\x00
+        CKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\\x00\\x00!\\x00\\x01","datamd5":"15213a9a96288bfb7e5c13e84f607cb5","destport":"137","ip":"217.138.28.194","ipv6":"false","location":"51.5085,-0.1257","organization":"Venus
+        Business Communications Limited","seen_date":"2018-11-15","srcport":"137","subnet":"217.138.0.0\/16","tag":["netbiosns","udpdata"],"transport":"udp","type":"udpdata"},{"@category":"sniffer","@timestamp":"2018-11-14T23:59:48.000Z","@type":"doc","asn":"AS20952","city":"London","country":"GB","data":"+\\xd8\\x00\\x00\\x00\\x01\\x00\\x00\\x00\\x00\\x00\\x00
+        CKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\\x00\\x00!\\x00\\x01","datamd5":"82b8a47bf4d3b74e15f79efe8c380e80","destport":"137","ip":"217.138.28.194","ipv6":"false","location":"51.5085,-0.1257","organization":"Venus
+        Business Communications Limited","seen_date":"2018-11-14","srcport":"137","subnet":"217.138.0.0\/16","tag":["netbiosns","udpdata"],"transport":"udp","type":"udpdata"},{"@category":"sniffer","@timestamp":"2018-11-13T02:19:24.000Z","@type":"doc","asn":"AS20952","city":"London","country":"GB","data":".\\x1a\\x00\\x00\\x00\\x01\\x00\\x00\\x00\\x00\\x00\\x00
+        CKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\\x00\\x00!\\x00\\x01","datamd5":"80bf8e57f77a486f1e9d60d0bceb3945","destport":"137","ip":"217.138.28.194","ipv6":"false","location":"51.5085,-0.1257","organization":"Venus
+        Business Communications Limited","seen_date":"2018-11-13","srcport":"137","subnet":"217.138.0.0\/16","tag":["netbiosns","udpdata"],"transport":"udp","type":"udpdata"},{"@category":"sniffer","@timestamp":"2018-11-12T23:28:24.000Z","@type":"doc","asn":"AS20952","city":"London","country":"GB","data":"8~\\x00\\x00\\x00\\x01\\x00\\x00\\x00\\x00\\x00\\x00
+        CKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\\x00\\x00!\\x00\\x01","datamd5":"c3b52e9f15f2e174bb6628a9696b4fc6","destport":"137","ip":"217.138.28.194","ipv6":"false","location":"51.5085,-0.1257","organization":"Venus
+        Business Communications Limited","seen_date":"2018-11-12","srcport":"137","subnet":"217.138.0.0\/16","tag":["netbiosns","udpdata"],"transport":"udp","type":"udpdata"},{"@category":"sniffer","@timestamp":"2018-11-11T22:33:49.000Z","@type":"doc","asn":"AS20952","city":"London","country":"GB","data":"\t\\x1b\\x00\\x00\\x00\\x01\\x00\\x00\\x00\\x00\\x00\\x00
+        CKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\\x00\\x00!\\x00\\x01","datamd5":"1015aefeca5dbff08cdb461e32b4d81b","destport":"137","ip":"217.138.28.194","ipv6":"false","location":"51.5085,-0.1257","organization":"Venus
+        Business Communications Limited","seen_date":"2018-11-11","srcport":"137","subnet":"217.138.0.0\/16","tag":["netbiosns","udpdata"],"transport":"udp","type":"udpdata"},{"@category":"sniffer","@timestamp":"2018-11-10T23:25:29.000Z","@type":"doc","asn":"AS20952","city":"London","country":"GB","data":"v\\x89\\x00\\x00\\x00\\x01\\x00\\x00\\x00\\x00\\x00\\x00
+        CKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\\x00\\x00!\\x00\\x01","datamd5":"b26ed2e74c30ebe47aa1a77fdfadefe6","destport":"137","ip":"217.138.28.194","ipv6":"false","location":"51.5085,-0.1257","organization":"Venus
+        Business Communications Limited","seen_date":"2018-11-10","srcport":"137","subnet":"217.138.0.0\/16","tag":["netbiosns","udpdata"],"transport":"udp","type":"udpdata"},{"@category":"sniffer","@timestamp":"2018-11-09T14:04:08.000Z","@type":"doc","asn":"AS20952","city":"London","country":"GB","data":"HO\\x00\\x00\\x00\\x01\\x00\\x00\\x00\\x00\\x00\\x00
+        CKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\\x00\\x00!\\x00\\x01","datamd5":"b80c24e022890b4d1f19d59fd2c100cd","destport":"137","ip":"217.138.28.194","ipv6":"false","location":"51.5085,-0.1257","organization":"Venus
+        Business Communications Limited","seen_date":"2018-11-09","srcport":"137","subnet":"217.138.0.0\/16","tag":["netbiosns","udpdata"],"transport":"udp","type":"udpdata"},{"@category":"sniffer","@timestamp":"2018-11-08T15:37:37.000Z","@type":"doc","asn":"AS20952","city":"London","country":"GB","data":"s]\\x00\\x00\\x00\\x01\\x00\\x00\\x00\\x00\\x00\\x00
+        CKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\\x00\\x00!\\x00\\x01","datamd5":"8d46a5f1822077e6c7c5d617ec67428a","destport":"137","ip":"217.138.28.194","ipv6":"false","location":"51.5085,-0.1257","organization":"Venus
+        Business Communications Limited","seen_date":"2018-11-08","srcport":"137","subnet":"217.138.0.0\/16","tag":["netbiosns","udpdata"],"transport":"udp","type":"udpdata"},{"@category":"sniffer","@timestamp":"2018-11-07T23:20:52.000Z","@type":"doc","asn":"AS20952","city":"London","country":"GB","data":"*\\x1e\\x00\\x00\\x00\\x01\\x00\\x00\\x00\\x00\\x00\\x00
+        CKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\\x00\\x00!\\x00\\x01","datamd5":"213ed66d477b945633ef2d8c4808bb68","destport":"137","ip":"217.138.28.194","ipv6":"false","location":"51.5085,-0.1257","organization":"Venus
+        Business Communications Limited","seen_date":"2018-11-07","srcport":"137","subnet":"217.138.0.0\/16","tag":["netbiosns","udpdata"],"transport":"udp","type":"udpdata"}],"status":"ok","took":"0.074","total":28}'
+    http_version: 
+  recorded_at: Sat, 17 Nov 2018 23:45:15 GMT
+recorded_with: VCR 4.0.0
