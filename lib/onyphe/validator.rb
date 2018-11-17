@@ -27,7 +27,7 @@ module Onyphe
     end
 
     def self.valid_md5?(md5)
-      md5.to_s.match? /^[a-f0-9]{32}$/
+      md5.to_s.match?(/^[a-f0-9]{32}$/)
     end
   end
 end
