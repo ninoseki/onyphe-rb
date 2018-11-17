@@ -3,8 +3,8 @@
 module Onyphe
   module Clients
     class Pastries < Client
-      def get_by_ip(ip)
-        get("/pastries/#{ip}") { |json| json }
+      def get_by_ip(ip, page = 1)
+        get("/pastries/#{ip}", page: page) { |json| json }
       end
     end
   end

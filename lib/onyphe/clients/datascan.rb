@@ -3,8 +3,8 @@
 module Onyphe
   module Clients
     class Datascan < Client
-      def get_by_query(q)
-        get("/datascan/#{q}") { |json| json }
+      def get_by_query(query, page = 1)
+        get("/datascan/#{query}", page: page) { |json| json }
       end
     end
   end

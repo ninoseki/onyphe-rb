@@ -3,8 +3,8 @@
 module Onyphe
   module Clients
     class Synscan < Client
-      def get_by_ip(ip)
-        get("/synscan/#{ip}") { |json| json }
+      def get_by_ip(ip, page = 1)
+        get("/synscan/#{ip}", page: page) { |json| json }
       end
     end
   end

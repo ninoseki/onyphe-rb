@@ -13,6 +13,7 @@ module Onyphe
 
       @ctl = Clients::Ctl.new(api_key)
       @datascan = Clients::Datascan.new(api_key)
+      @forward = Clients::Forward.new(api_key)
       @geoloc = Clients::Geoloc.new(api_key)
       @inetnum = Clients::Inetnum.new(api_key)
       @ip = Clients::IP.new(api_key)
@@ -29,6 +30,7 @@ module Onyphe
 
     def_delegator :@ctl, :get_by_domain, :ctl
     def_delegator :@datascan, :get_by_query, :datascan
+    def_delegator :@forward, :get_by_ip, :forward
     def_delegator :@geoloc, :get_by_ip, :geoloc
     def_delegator :@inetnum, :get_by_ip, :inetnum
     def_delegator :@ip, :get_by_ip, :ip

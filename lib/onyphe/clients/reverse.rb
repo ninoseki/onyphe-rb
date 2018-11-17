@@ -3,8 +3,8 @@
 module Onyphe
   module Clients
     class Reverse < Client
-      def get_by_ip(ip)
-        get("/reverse/#{ip}") { |json| json }
+      def get_by_ip(ip, page = 1)
+        get("/reverse/#{ip}", page: page) { |json| json }
       end
     end
   end

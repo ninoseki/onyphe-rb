@@ -43,27 +43,66 @@ api.onionscan("3fyb44wdhnd2ghhl.onion")
 api.pastries("1.1.1.1")
 api.reverse("1.1.1.1")
 api.sniffer("1.1.1.1")
-api.sysscan("1.1.1.1")
+api.synscan("1.1.1.1")
 api.threatlist("1.1.1.1")
 
 api.search.datascan(
-    product: "HTTP Server",
-    port: 443,
-    os: "Windows",
-    tls: true
+  os: "Windows",
+  port: 443,
+  product: "HTTP Server",
+  tls: true
 )
 api.search.synscan(
-    port: 23,
-    country: "FR",
-    tag: "mirai"
+  country: "FR",
+  port: 23,
+  tag: "mirai"
 )
-api.search.inetnum((organization: "OVH SAS")
+
+api.search.inetnum(organization: "OVH SAS")
 api.search.threatlist(country: "RU")
 api.search.pastries(content: "hacked")
 api.search.resolver(ip: "124.108.0.0/16")
 api.search.sniffer(ip: "14.164.0.0/14")
 api.search.ctl(host: "vpn")
 api.search.onionscan("app.http.keywords": "dump")
+```
+
+All the API response is wrapped by [OpenStruct](https://github.com/ruby/ostruct).
+
+It means you can access to a response through a property-like syntax.
+
+```rb
+res = api.sniffer("217.138.28.194")
+res.results.each do |result|
+  puts result.asn
+  puts result.ip
+  puts result.location
+  puts result.organization
+end
+```
+
+Or you can get a hash representative data by using `#to_h` method.
+
+```rb
+res = api.sniffer("217.138.28.194")
+p res.to_h
+# => {:count=>10, :error=>0, :max_page=>3, :myip=>"<MY_IP>", :page=>1, :results=>[{:@category=>"sniffer", :@timestamp=>"2018-11-15T00:35:37.000Z", :@type=>"doc", :asn=>"AS20952", :city=>"London", :country=>"GB", ...
+```
+
+### Pagination
+
+Enumerable style pagination is not supported at the present time.
+
+You can specify page index by passing `page` argument to the method.
+
+```rb
+res = api.search.threatlist(country: "RU", page = 1)
+page = res.page
+max_page = res.max_page
+
+((page + 1)..max_page).each do |page_index|
+  res = api.search.threatlist({ country: "RU" }, page = page_index)
+end
 ```
 
 ## Contributing

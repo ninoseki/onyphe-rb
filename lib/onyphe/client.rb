@@ -34,11 +34,11 @@ module Onyphe
 
     def request(req)
       Net::HTTP.start(HOST, 443, https_options) do |http|
-        response = http.request(req)
-        if response.code == '200'
-          yield JSON.parse(response.body, object_class: Response)
+        http_response = http.request(req)
+        if http_response.code == '200'
+          yield JSON.parse(http_response.body, object_class: Response)
         else
-          raise(Error, "unsupported response code returned: #{response.code}")
+          raise(Error, "unsupported response code returned: #{http_response.code}")
         end
       end
     end
@@ -50,15 +50,6 @@ module Onyphe
 
       get = Net::HTTP::Get.new(url)
       request(get, &block)
-    end
-
-    def post(path, params = {}, &block)
-      url = url_for(path)
-      url.query = "apikey=#{@api_key}"
-
-      post = Net::HTTP::Post.new(url)
-      post.body = params.is_a?(Hash) ? params.to_json : params.to_s
-      request(post, &block)
     end
   end
 end

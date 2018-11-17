@@ -17,6 +17,13 @@ RSpec.describe Onyphe::API, :vcr do
     end
   end
 
+  describe "#forward" do
+    it "should return a response" do
+      res = subject.forward("2.22.52.73")
+      expect(res.error).to eq(0)
+    end
+  end
+
   describe "#geoloc" do
     it "should return a response" do
       res = subject.geoloc("1.1.1.1")
@@ -40,7 +47,7 @@ RSpec.describe Onyphe::API, :vcr do
 
   describe "#md5" do
     it "should return a response" do
-      res = subject.md5("44d88612fea8a8f36de82e1278abb02f")
+      res = subject.md5("7a1f20cae067b75a52bc024b83ee4667")
       expect(res.error).to eq(0)
     end
   end

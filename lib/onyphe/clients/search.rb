@@ -5,46 +5,46 @@ require "addressable/uri"
 module Onyphe
   module Clients
     class Search < Client
-      def datascan(params)
-        search("datascan", params)
+      def datascan(params, page = 1)
+        search("datascan", params, page)
       end
 
-      def synscan(params)
-        search("synscan", params)
+      def synscan(params, page = 1)
+        search("synscan", params, page)
       end
 
-      def inetnum(params)
-        search("inetnum", params)
+      def inetnum(params, page = 1)
+        search("inetnum", params, page)
       end
 
-      def threatlist(params)
-        search("threatlist", params)
+      def threatlist(params, page = 1)
+        search("threatlist", params, page)
       end
 
-      def pastries(params)
-        search("pastries", params)
+      def pastries(params, page = 1)
+        search("pastries", params, page)
       end
 
-      def resolver(params)
-        search("resolver", params)
+      def resolver(params, page = 1)
+        search("resolver", params, page)
       end
 
-      def sniffer(params)
-        search("sniffer", params)
+      def sniffer(params, page = 1)
+        search("sniffer", params, page)
       end
 
-      def ctl(params)
-        search("ctl", params)
+      def ctl(params, page = 1)
+        search("ctl", params, page)
       end
 
-      def onionscan(params)
-        search("onionscan", params)
+      def onionscan(params, page = 1)
+        search("onionscan", params, page)
       end
 
       private
 
-      def search(type, params)
-        get("/search/#{type}/#{params_to_uri_string(params)}") { |json| json }
+      def search(type, params, page)
+        get("/search/#{type}/#{params_to_uri_string(params)}", page: page) { |json| json }
       end
 
       def params_to_uri_string(params)

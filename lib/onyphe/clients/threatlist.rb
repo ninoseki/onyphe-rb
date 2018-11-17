@@ -3,8 +3,8 @@
 module Onyphe
   module Clients
     class Threatlist < Client
-      def get_by_ip(ip)
-        get("/threatlist/#{ip}") { |json| json }
+      def get_by_ip(ip, page = 1)
+        get("/threatlist/#{ip}", page: page) { |json| json }
       end
     end
   end
