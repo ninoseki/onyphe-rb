@@ -4,6 +4,8 @@ module Onyphe
   module Clients
     class Forward < Client
       def get_by_ip(ip, page = 1)
+        raise ArgumentError, "Invalid IP address: #{ip}" unless Validator.valid_ip?(ip)
+
         get("/forward/#{ip}", page: page) { |json| json }
       end
     end

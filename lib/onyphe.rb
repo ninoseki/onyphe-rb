@@ -3,6 +3,8 @@
 require "onyphe/response"
 require "onyphe/api"
 
+require "onyphe/validator"
+
 require "onyphe/client"
 require "onyphe/clients/ctl"
 require "onyphe/clients/datascan"
