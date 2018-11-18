@@ -104,9 +104,19 @@ RSpec.describe Onyphe::CLI, :vcr do
   describe "#threatlist" do
     it "should return a response" do
       res = capture(:stdout) { subject.start(%w(threatlist 206.81.18.195)) }
-      puts res
       json = JSON.parse(res)
       expect(json).to be_a(Hash)
+    end
+  end
+
+  context "when ONYPHE_API key is not set" do
+    before do
+      allow(ENV).to receive(:[]).with('ONYPHE_API_KEY').and_return(nil)
+    end
+
+    it "should output an error message" do
+      res = capture(:stdout) { subject.start(%w(threatlist 206.81.18.195)) }
+      expect(res.chomp).to eq("Please set your API key as an environment variable `ONYPHE_API_KEY`")
     end
   end
 end
