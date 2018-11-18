@@ -25,6 +25,8 @@ Or install it yourself as:
 
 ## Usage
 
+### As a library
+
 ```rb
 require "ohyphe"
 
@@ -90,7 +92,7 @@ p res.to_h
 # => {:count=>10, :error=>0, :max_page=>3, :myip=>"<MY_IP>", :page=>1, :results=>[{:@category=>"sniffer", :@timestamp=>"2018-11-15T00:35:37.000Z", :@type=>"doc", :asn=>"AS20952", :city=>"London", :country=>"GB", ...
 ```
 
-### Pagination
+#### Pagination
 
 Enumerable style pagination is not supported at the present time.
 
@@ -104,6 +106,34 @@ max_page = res.max_page
 ((page + 1)..max_page).each do |page_index|
   res = api.search.threatlist({ country: "RU" }, page = page_index)
 end
+```
+
+### As a CLI tool
+
+Note: make sure that your API key is set as an environment variable `ONYPHE_API_KEY` before using the CLI tool.
+
+```sh
+$ onyphe
+Commands:
+  onyphe ctl DOMAIN          # It will return information for the given domain name X509 certificate information from CTLs with history of changes
+  onyphe datascan IP/STRING  # It will return datascan information for the given IPv{4,6} address or string with history of changes
+  onyphe forward IP          # It will return forward DNS lookup information for the given IPv{4,6} address with history of changes
+  onyphe geoloc IP           # It will return geolocation information for the given IPv{4,6} address
+  onyphe help [COMMAND]      # Describe available commands or one specific command
+  onyphe inetnum IP          # It will return inetnum information for the given IPv{4,6} address with history of changes
+  onyphe ip IP               # It will return a summary of all information for the given IPv{4,6} address
+  onyphe md5 MD5             # It will return information for the given datamd5 filter from datascan information category with history of changes
+  onyphe onionscan ONION     # It will return information for the given onion domain with history of changes
+  onyphe pastries IP         # It will return pastries information for the given IPv{4,6} address with history of changes
+  onyphe reverse IP          # It will return reverse DNS lookup information for the given IPv{4,6} address with history of changes
+  onyphe sniffer IP          # It will return information for the given IP address with history of changes
+  onyphe synscan IP          # It will return synscan information for the given IPv{4,6} address with history of changes.
+  onyphe threattlist IP      # It will return threatlist information for the given IPv{4,6} address with history of change
+```
+
+```sh
+$ onyphe geoloc 1.1.1.1
+{"count":1,"error":0,"myip":"x.x.x.x","results":[{"@category":"geoloc","@timestamp":"2018-11-18T00:15:50.000Z","@type":"doc","asn":"AS13335","city":"","country":"AU","ip":"1.1.1.1","ipv6":"false","latitude":"-33.4940","location":"-33.4940,143.2104","longitude":"143.2104","organization":"Cloudflare, Inc.","subnet":"1.1.1.0/24"}],"status":"ok","took":"0.000","total":1}
 ```
 
 ## Contributing
