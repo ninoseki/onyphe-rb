@@ -1,0 +1,366 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.onyphe.io/api/onionscan/mh7mkfvezts5j6yu.onion?apikey=<API_KEY>&page=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - www.onyphe.io
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sat, 17 Nov 2018 23:44:55 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '33911'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"count":6,"error":0,"max_page":1,"myip":"<MY_IP>","page":1,"results":[{"@category":"onionscan","@timestamp":"2018-11-16T03:16:46.000Z","@type":"doc","app":{"extract":{"domain":["ats-lang.org","wikipedia.org","haskell.org","wikibooks.org"],"file":["atom.xml","rss.xml","grdt-popl03.pdf"],"hostname":["en.wikibooks.org","en.wikipedia.org","wiki.haskell.org","www.ats-lang.org"],"url":["https:\/\/wiki.haskell.org\/GADTs_for_dummies","http:\/\/www.ats-lang.org\/MYDATA\/GRDT-popl03.pdf","http:\/\/www.ats-lang.org\/","https:\/\/en.wikipedia.org\/wiki\/Generalized_algebraic_data_type","https:\/\/en.wikibooks.org\/wiki\/Haskell\/GADT"]},"http":{"bodymd5":"cd0feb74776d7b1cca2307ca8f71cd38","headermd5":"a2537e6fbaeb085ff0380c9144ee74fe","title":"Bluish
+        Coder"},"length":"4096"},"cpe":["cpe:\/a:igor_sysoev:nginx:1.10.3"],"data":"HTTP\/1.1
+        200 OK\r\nContent-Length: 93915\r\nETag: \"5bc71236-16edb\"\r\nDate: Fri,
+        16 Nov 2018 03:16:46 GMT\r\nLast-Modified: Wed, 17 Oct 2018 10:43:02 GMT\r\nServer:
+        nginx\/1.10.3 (Ubuntu)\r\nContent-Type: text\/html\r\nAccept-Ranges: bytes\r\nConnection:
+        keep-alive\r\n\r\n\n<!DOCTYPE html>\n<html>\n<head>\n   <meta http-equiv=\"content-type\"
+        content=\"text\/html; charset=utf-8\" \/>\n   <title>Bluish Coder<\/title>\n   <meta
+        name=\"author\" content=\"Chris Double\" \/>\n\n   <link href=\".\/atom.xml\"
+        rel=\"alternate\" title=\"Bluish Coder\" type=\"application\/atom+xml\" \/>\n   <link
+        rel=\"alternate\" type=\"application\/rss+xml\" title=\"RSS\" href=\".\/rss.xml\"\/>
+        \n\n   <link rel=\"stylesheet\" href=\".\/css\/screen.css\" type=\"text\/css\"
+        media=\"screen, projection\">\n   <link rel=\"stylesheet\" href=\".\/css\/print.css\"
+        type=\"text\/css\" media=\"print\">\n   <!--[if lt IE 8]><link rel=\"stylesheet\"
+        href=\".\/css\/ie.css\" type=\"text\/css\" media=\"screen, projection\"><![endif]-->\n   <link
+        rel=\"stylesheet\" href=\".\/css\/syntax.css\" type=\"text\/css\" \/>\n   <link
+        rel=\"stylesheet\" href=\".\/css\/bluishcoder.css\" type=\"text\/css\">\n<\/head>\n<body>\n  <div
+        class=\"container\">\n    <div class=\"span-24 blog-header\">\n      <h1 id=\"blog-title\"><a
+        href=\".\/index.html\">Bluish Coder<\/a><\/h1>\n      <p id=\"blog-description\">Programming
+        Languages, Martials Arts and Computers. The Weblog of Chris Double.<\/p>\n    <\/div>\n    \n    <hr>\n    <div
+        class=\"span-20\">\n      \n\n  \n    <div class=\"post\">\n      <div class=\"span-2\"><p
+        class=\"small-heading\">2018-10-16<\/p><\/div>\n      <div class=\"span-18
+        last\">\n      <h2 class=\"post-title\"><a href=\".\/.\/2018\/10\/16\/generalized-algebraic-data-types-in-ats.html\">Generalized
+        Algebraic Data Types in ATS<\/a><\/h2>\n      <p>The <a href=\"http:\/\/www.ats-lang.org\/\">ATS
+        programming language<\/a> supports\ndefining Generalized Algebraic Data Types
+        (GADTS). They allow defining\ndatatypes where the constructors for the datatype
+        are explicitly\ndefined by the programmer. This has a number of uses and I''ll
+        go\nthrough some examples in this post. GADTs are sometimes referred to as\nGuarded
+        Recursive Datatypes.<\/p>\n\n<p>Some useful resources for reading up on GADTs
+        that I used to write\nthis post are:<\/p>\n\n<ul>\n<li><a href=\"https:\/\/en.wikipedia.org\/wiki\/Generalized_algebraic_data_type\">Wikipedia
+        page on GADT<\/a><\/li>\n<li><a href=\"https:\/\/en.wikibooks.org\/wiki\/Haskell\/GADT\">Haskell\/GADT
+        Wikibook<\/a><\/li>\n<li><a href=\"https:\/\/wiki.haskell.org\/GADTs_for_dummies\">GADTs
+        for Dummies<\/a><\/li>\n<li><a href=\"http:\/\/www.ats-lang.org\/MYDATA\/GRDT-popl03.pdf\">Guarded
+        Recursive Datatype Constructors<\/a><\/li>\n<\/ul>\n\n\n<p>The examples here
+        were tested with ATS2-0.3.11.<\/p>\n\n<h2>Arithmetic Expressions<\/h2>\n\n<p>This
+        is probably the most common demonstration of GADT usage and it''s\nuseful
+        to see how to do it in ATS. The example is taken from the\n<a href=\"https:\/\/en.wikibooks.org\/wiki\/Haskell\/GADT\">Haskell\/GADT
+        Wikibook<\/a>.<\/p>\n\n<p>First we''ll create datatype to represent a simple
+        expression language,\nand write an evaluation function for it, without using
+        GADTs:<\/p>\n\n<pre><code>#include \"share\/atspre_define.hats\"\n#include
+        \"share\/atspre_staload.hats\"\n\ndatatype Expr  =\n  | I of int\n  | Add
+        of (Expr, Expr)\n  | Mul of (Expr, Expr)\n\nfun eval (x:Expr): int =\n  case+
+        x of\n  | I i =&gt; i\n  | Add (t1, t2) =&gt; eval(t1) + eval(t2)\n  | Mul
+        (t1, t2) =&gt; eval(t1) * eval(t2)\n\n\nimplement main0() = let\n  val term
+        = Mul(I(2), I(4))\n  val res = eval(term)\nin\n  println!(\"res=\", res)\nend\n<\/code><\/pre>\n\n<p><code>Expr<\/code>
+        is a datatype with three constructors. <code>I<\/code> represents an\ninteger,
+        <code>Add<\/code> adds two expressions together and <code>Mul<\/code> multiples
+        two\nexpressions. The <code>eval<\/code> function pattern matches on these
+        and\nevaluates them. The example can be compiled with the following if\nplaced
+        in a file <code>arith1.dats<\/code>:<\/p>\n\n<pre><code>$ patscc -DATS_MEMALLOC_LIBC
+        -o arith1 arith1.dats\n$ .\/arith1\nres=8\n<\/code><\/pre>\n\n<p>Now we extend
+        the expression language with another type, booleans, and\nadd an <code>Expr<\/code>
+        constructor to compare for equality:<\/p>\n\n<pre><code>datatype Expr  =\n  |
+        I of int\n  | B of bool\n  | Add of (Expr, Ex","datamd5":"ff416ac8d424650a2261f19e50f9ccb8","device":{"class":"Web
+        Server"},"domain":"mh7mkfvezts5j6yu.onion","hostname":"mh7mkfvezts5j6yu.onion","onion":"mh7mkfvezts5j6yu.onion","os":"Linux","osdistribution":"Ubuntu","port":80,"product":"NGINX","productvendor":"Igor
+        Sysoev","productversion":"1.10.3","protocol":"http","protocolversion":"1.1","reason":"OK","seen_date":"2018-11-16","source":"onionscan","status":"200","tag":["ok"],"tls":"false","url":"\/"},{"@category":"onionscan","@timestamp":"2018-11-14T10:27:18.000Z","@type":"doc","app":{"extract":{"domain":["wikipedia.org","haskell.org","ats-lang.org","wikibooks.org"],"file":["grdt-popl03.pdf","atom.xml","rss.xml"],"hostname":["en.wikibooks.org","en.wikipedia.org","wiki.haskell.org","www.ats-lang.org"],"url":["https:\/\/en.wikipedia.org\/wiki\/Generalized_algebraic_data_type","http:\/\/www.ats-lang.org\/MYDATA\/GRDT-popl03.pdf","http:\/\/www.ats-lang.org\/","https:\/\/wiki.haskell.org\/GADTs_for_dummies","https:\/\/en.wikibooks.org\/wiki\/Haskell\/GADT"]},"http":{"bodymd5":"cd0feb74776d7b1cca2307ca8f71cd38","headermd5":"e316168414521f0da6d7f32f41642bd0","title":"Bluish
+        Coder"},"length":"4096"},"cpe":["cpe:\/a:igor_sysoev:nginx:1.10.3"],"data":"HTTP\/1.1
+        200 OK\r\nContent-Length: 93915\r\nETag: \"5bc71236-16edb\"\r\nDate: Wed,
+        14 Nov 2018 10:27:18 GMT\r\nLast-Modified: Wed, 17 Oct 2018 10:43:02 GMT\r\nServer:
+        nginx\/1.10.3 (Ubuntu)\r\nContent-Type: text\/html\r\nAccept-Ranges: bytes\r\nAge:
+        1\r\nConnection: keep-alive\r\n\r\n\n<!DOCTYPE html>\n<html>\n<head>\n   <meta
+        http-equiv=\"content-type\" content=\"text\/html; charset=utf-8\" \/>\n   <title>Bluish
+        Coder<\/title>\n   <meta name=\"author\" content=\"Chris Double\" \/>\n\n   <link
+        href=\".\/atom.xml\" rel=\"alternate\" title=\"Bluish Coder\" type=\"application\/atom+xml\"
+        \/>\n   <link rel=\"alternate\" type=\"application\/rss+xml\" title=\"RSS\"
+        href=\".\/rss.xml\"\/> \n\n   <link rel=\"stylesheet\" href=\".\/css\/screen.css\"
+        type=\"text\/css\" media=\"screen, projection\">\n   <link rel=\"stylesheet\"
+        href=\".\/css\/print.css\" type=\"text\/css\" media=\"print\">\n   <!--[if
+        lt IE 8]><link rel=\"stylesheet\" href=\".\/css\/ie.css\" type=\"text\/css\"
+        media=\"screen, projection\"><![endif]-->\n   <link rel=\"stylesheet\" href=\".\/css\/syntax.css\"
+        type=\"text\/css\" \/>\n   <link rel=\"stylesheet\" href=\".\/css\/bluishcoder.css\"
+        type=\"text\/css\">\n<\/head>\n<body>\n  <div class=\"container\">\n    <div
+        class=\"span-24 blog-header\">\n      <h1 id=\"blog-title\"><a href=\".\/index.html\">Bluish
+        Coder<\/a><\/h1>\n      <p id=\"blog-description\">Programming Languages,
+        Martials Arts and Computers. The Weblog of Chris Double.<\/p>\n    <\/div>\n    \n    <hr>\n    <div
+        class=\"span-20\">\n      \n\n  \n    <div class=\"post\">\n      <div class=\"span-2\"><p
+        class=\"small-heading\">2018-10-16<\/p><\/div>\n      <div class=\"span-18
+        last\">\n      <h2 class=\"post-title\"><a href=\".\/.\/2018\/10\/16\/generalized-algebraic-data-types-in-ats.html\">Generalized
+        Algebraic Data Types in ATS<\/a><\/h2>\n      <p>The <a href=\"http:\/\/www.ats-lang.org\/\">ATS
+        programming language<\/a> supports\ndefining Generalized Algebraic Data Types
+        (GADTS). They allow defining\ndatatypes where the constructors for the datatype
+        are explicitly\ndefined by the programmer. This has a number of uses and I''ll
+        go\nthrough some examples in this post. GADTs are sometimes referred to as\nGuarded
+        Recursive Datatypes.<\/p>\n\n<p>Some useful resources for reading up on GADTs
+        that I used to write\nthis post are:<\/p>\n\n<ul>\n<li><a href=\"https:\/\/en.wikipedia.org\/wiki\/Generalized_algebraic_data_type\">Wikipedia
+        page on GADT<\/a><\/li>\n<li><a href=\"https:\/\/en.wikibooks.org\/wiki\/Haskell\/GADT\">Haskell\/GADT
+        Wikibook<\/a><\/li>\n<li><a href=\"https:\/\/wiki.haskell.org\/GADTs_for_dummies\">GADTs
+        for Dummies<\/a><\/li>\n<li><a href=\"http:\/\/www.ats-lang.org\/MYDATA\/GRDT-popl03.pdf\">Guarded
+        Recursive Datatype Constructors<\/a><\/li>\n<\/ul>\n\n\n<p>The examples here
+        were tested with ATS2-0.3.11.<\/p>\n\n<h2>Arithmetic Expressions<\/h2>\n\n<p>This
+        is probably the most common demonstration of GADT usage and it''s\nuseful
+        to see how to do it in ATS. The example is taken from the\n<a href=\"https:\/\/en.wikibooks.org\/wiki\/Haskell\/GADT\">Haskell\/GADT
+        Wikibook<\/a>.<\/p>\n\n<p>First we''ll create datatype to represent a simple
+        expression language,\nand write an evaluation function for it, without using
+        GADTs:<\/p>\n\n<pre><code>#include \"share\/atspre_define.hats\"\n#include
+        \"share\/atspre_staload.hats\"\n\ndatatype Expr  =\n  | I of int\n  | Add
+        of (Expr, Expr)\n  | Mul of (Expr, Expr)\n\nfun eval (x:Expr): int =\n  case+
+        x of\n  | I i =&gt; i\n  | Add (t1, t2) =&gt; eval(t1) + eval(t2)\n  | Mul
+        (t1, t2) =&gt; eval(t1) * eval(t2)\n\n\nimplement main0() = let\n  val term
+        = Mul(I(2), I(4))\n  val res = eval(term)\nin\n  println!(\"res=\", res)\nend\n<\/code><\/pre>\n\n<p><code>Expr<\/code>
+        is a datatype with three constructors. <code>I<\/code> represents an\ninteger,
+        <code>Add<\/code> adds two expressions together and <code>Mul<\/code> multiples
+        two\nexpressions. The <code>eval<\/code> function pattern matches on these
+        and\nevaluates them. The example can be compiled with the following if\nplaced
+        in a file <code>arith1.dats<\/code>:<\/p>\n\n<pre><code>$ patscc -DATS_MEMALLOC_LIBC
+        -o arith1 arith1.dats\n$ .\/arith1\nres=8\n<\/code><\/pre>\n\n<p>Now we extend
+        the expression language with another type, booleans, and\nadd an <code>Expr<\/code>
+        constructor to compare for equality:<\/p>\n\n<pre><code>datatype Expr  =\n  |
+        I of int\n  | B of bool\n  | Add of (","datamd5":"0d974eb3d61bb5255f2339430c377eb3","device":{"class":"Web
+        Server"},"domain":"mh7mkfvezts5j6yu.onion","hostname":"mh7mkfvezts5j6yu.onion","onion":"mh7mkfvezts5j6yu.onion","os":"Linux","osdistribution":"Ubuntu","port":80,"product":"NGINX","productvendor":"Igor
+        Sysoev","productversion":"1.10.3","protocol":"http","protocolversion":"1.1","reason":"OK","seen_date":"2018-11-14","source":"onionscan","status":"200","tag":["ok"],"tls":"false","url":"\/"},{"@category":"onionscan","@timestamp":"2018-11-09T03:03:51.000Z","@type":"doc","app":{"extract":{"domain":["wikipedia.org","ats-lang.org","wikibooks.org","haskell.org"],"file":["rss.xml","grdt-popl03.pdf","atom.xml"],"hostname":["en.wikibooks.org","en.wikipedia.org","wiki.haskell.org","www.ats-lang.org"],"url":["https:\/\/en.wikipedia.org\/wiki\/Generalized_algebraic_data_type","http:\/\/www.ats-lang.org\/","https:\/\/en.wikibooks.org\/wiki\/Haskell\/GADT","http:\/\/www.ats-lang.org\/MYDATA\/GRDT-popl03.pdf","https:\/\/wiki.haskell.org\/GADTs_for_dummies"]},"http":{"bodymd5":"cd0feb74776d7b1cca2307ca8f71cd38","headermd5":"e316168414521f0da6d7f32f41642bd0","title":"Bluish
+        Coder"},"length":"4096"},"cpe":["cpe:\/a:igor_sysoev:nginx:1.10.3"],"data":"HTTP\/1.1
+        200 OK\r\nContent-Length: 93915\r\nETag: \"5bc71236-16edb\"\r\nDate: Fri,
+        09 Nov 2018 03:03:50 GMT\r\nLast-Modified: Wed, 17 Oct 2018 10:43:02 GMT\r\nServer:
+        nginx\/1.10.3 (Ubuntu)\r\nContent-Type: text\/html\r\nAccept-Ranges: bytes\r\nAge:
+        1\r\nConnection: keep-alive\r\n\r\n\n<!DOCTYPE html>\n<html>\n<head>\n   <meta
+        http-equiv=\"content-type\" content=\"text\/html; charset=utf-8\" \/>\n   <title>Bluish
+        Coder<\/title>\n   <meta name=\"author\" content=\"Chris Double\" \/>\n\n   <link
+        href=\".\/atom.xml\" rel=\"alternate\" title=\"Bluish Coder\" type=\"application\/atom+xml\"
+        \/>\n   <link rel=\"alternate\" type=\"application\/rss+xml\" title=\"RSS\"
+        href=\".\/rss.xml\"\/> \n\n   <link rel=\"stylesheet\" href=\".\/css\/screen.css\"
+        type=\"text\/css\" media=\"screen, projection\">\n   <link rel=\"stylesheet\"
+        href=\".\/css\/print.css\" type=\"text\/css\" media=\"print\">\n   <!--[if
+        lt IE 8]><link rel=\"stylesheet\" href=\".\/css\/ie.css\" type=\"text\/css\"
+        media=\"screen, projection\"><![endif]-->\n   <link rel=\"stylesheet\" href=\".\/css\/syntax.css\"
+        type=\"text\/css\" \/>\n   <link rel=\"stylesheet\" href=\".\/css\/bluishcoder.css\"
+        type=\"text\/css\">\n<\/head>\n<body>\n  <div class=\"container\">\n    <div
+        class=\"span-24 blog-header\">\n      <h1 id=\"blog-title\"><a href=\".\/index.html\">Bluish
+        Coder<\/a><\/h1>\n      <p id=\"blog-description\">Programming Languages,
+        Martials Arts and Computers. The Weblog of Chris Double.<\/p>\n    <\/div>\n    \n    <hr>\n    <div
+        class=\"span-20\">\n      \n\n  \n    <div class=\"post\">\n      <div class=\"span-2\"><p
+        class=\"small-heading\">2018-10-16<\/p><\/div>\n      <div class=\"span-18
+        last\">\n      <h2 class=\"post-title\"><a href=\".\/.\/2018\/10\/16\/generalized-algebraic-data-types-in-ats.html\">Generalized
+        Algebraic Data Types in ATS<\/a><\/h2>\n      <p>The <a href=\"http:\/\/www.ats-lang.org\/\">ATS
+        programming language<\/a> supports\ndefining Generalized Algebraic Data Types
+        (GADTS). They allow defining\ndatatypes where the constructors for the datatype
+        are explicitly\ndefined by the programmer. This has a number of uses and I''ll
+        go\nthrough some examples in this post. GADTs are sometimes referred to as\nGuarded
+        Recursive Datatypes.<\/p>\n\n<p>Some useful resources for reading up on GADTs
+        that I used to write\nthis post are:<\/p>\n\n<ul>\n<li><a href=\"https:\/\/en.wikipedia.org\/wiki\/Generalized_algebraic_data_type\">Wikipedia
+        page on GADT<\/a><\/li>\n<li><a href=\"https:\/\/en.wikibooks.org\/wiki\/Haskell\/GADT\">Haskell\/GADT
+        Wikibook<\/a><\/li>\n<li><a href=\"https:\/\/wiki.haskell.org\/GADTs_for_dummies\">GADTs
+        for Dummies<\/a><\/li>\n<li><a href=\"http:\/\/www.ats-lang.org\/MYDATA\/GRDT-popl03.pdf\">Guarded
+        Recursive Datatype Constructors<\/a><\/li>\n<\/ul>\n\n\n<p>The examples here
+        were tested with ATS2-0.3.11.<\/p>\n\n<h2>Arithmetic Expressions<\/h2>\n\n<p>This
+        is probably the most common demonstration of GADT usage and it''s\nuseful
+        to see how to do it in ATS. The example is taken from the\n<a href=\"https:\/\/en.wikibooks.org\/wiki\/Haskell\/GADT\">Haskell\/GADT
+        Wikibook<\/a>.<\/p>\n\n<p>First we''ll create datatype to represent a simple
+        expression language,\nand write an evaluation function for it, without using
+        GADTs:<\/p>\n\n<pre><code>#include \"share\/atspre_define.hats\"\n#include
+        \"share\/atspre_staload.hats\"\n\ndatatype Expr  =\n  | I of int\n  | Add
+        of (Expr, Expr)\n  | Mul of (Expr, Expr)\n\nfun eval (x:Expr): int =\n  case+
+        x of\n  | I i =&gt; i\n  | Add (t1, t2) =&gt; eval(t1) + eval(t2)\n  | Mul
+        (t1, t2) =&gt; eval(t1) * eval(t2)\n\n\nimplement main0() = let\n  val term
+        = Mul(I(2), I(4))\n  val res = eval(term)\nin\n  println!(\"res=\", res)\nend\n<\/code><\/pre>\n\n<p><code>Expr<\/code>
+        is a datatype with three constructors. <code>I<\/code> represents an\ninteger,
+        <code>Add<\/code> adds two expressions together and <code>Mul<\/code> multiples
+        two\nexpressions. The <code>eval<\/code> function pattern matches on these
+        and\nevaluates them. The example can be compiled with the following if\nplaced
+        in a file <code>arith1.dats<\/code>:<\/p>\n\n<pre><code>$ patscc -DATS_MEMALLOC_LIBC
+        -o arith1 arith1.dats\n$ .\/arith1\nres=8\n<\/code><\/pre>\n\n<p>Now we extend
+        the expression language with another type, booleans, and\nadd an <code>Expr<\/code>
+        constructor to compare for equality:<\/p>\n\n<pre><code>datatype Expr  =\n  |
+        I of int\n  | B of bool\n  | Add of (","datamd5":"0d974eb3d61bb5255f2339430c377eb3","device":{"class":"Web
+        Server"},"domain":"mh7mkfvezts5j6yu.onion","hostname":"mh7mkfvezts5j6yu.onion","onion":"mh7mkfvezts5j6yu.onion","os":"Linux","osdistribution":"Ubuntu","port":80,"product":"NGINX","productvendor":"Igor
+        Sysoev","productversion":"1.10.3","protocol":"http","protocolversion":"1.1","reason":"OK","seen_date":"2018-11-09","source":"onionscan","status":"200","tag":["ok"],"tls":"false","url":"\/"},{"@category":"onionscan","@timestamp":"2018-11-06T10:59:52.000Z","@type":"doc","app":{"extract":{"domain":["ats-lang.org","wikipedia.org","wikibooks.org","haskell.org"],"file":["grdt-popl03.pdf"],"hostname":["en.wikibooks.org","en.wikipedia.org","wiki.haskell.org","www.ats-lang.org"],"url":["https:\/\/wiki.haskell.org\/GADTs_for_dummies","http:\/\/www.ats-lang.org\/","http:\/\/www.ats-lang.org\/MYDATA\/GRDT-popl03.pdf","https:\/\/en.wikibooks.org\/wiki\/Haskell\/GADT","https:\/\/en.wikipedia.org\/wiki\/Generalized_algebraic_data_type"]},"http":{"bodymd5":"63b64b741f1f10c95f53cdad8b027edf","headermd5":"e316168414521f0da6d7f32f41642bd0","title":"Bluish
+        Coder"},"length":"4096"},"cpe":["cpe:\/a:igor_sysoev:nginx:1.10.3"],"data":"HTTP\/1.1
+        200 OK\r\nContent-Length: 93915\r\nETag: \"5bc71236-16edb\"\r\nDate: Tue,
+        06 Nov 2018 10:59:52 GMT\r\nLast-Modified: Wed, 17 Oct 2018 10:43:02 GMT\r\nServer:
+        nginx\/1.10.3 (Ubuntu)\r\nContent-Type: text\/html\r\nAccept-Ranges: bytes\r\nAge:
+        1\r\nConnection: keep-alive\r\n\r\n\n<!DOCTYPE html>\n<html>\n<head>\n   <meta
+        http-equiv=\"content-type\" content=\"text\/html; charset=utf-8\" \/>\n   <title>Bluish
+        Coder<\/title>\n   <meta name=\"author\" content=\"Chris Double\" \/>\n\n   <link
+        href=\".\/atom.xml\" rel=\"alternate\" title=\"Bluish Coder\" type=\"application\/atom+xml\"
+        \/>\n   <link rel=\"alternate\" type=\"application\/rss+xml\" title=\"RSS\"
+        href=\".\/rss.xml\"\/> \n\n   <link rel=\"stylesheet\" href=\".\/css\/screen.css\"
+        type=\"text\/css\" media=\"screen, projection\">\n   <link rel=\"stylesheet\"
+        href=\".\/css\/print.css\" type=\"text\/css\" media=\"print\">\n   <!--[if
+        lt IE 8]><link rel=\"stylesheet\" href=\".\/css\/ie.css\" type=\"text\/css\"
+        media=\"screen, projection\"><![endif]-->\n   <link rel=\"stylesheet\" href=\".\/css\/syntax.css\"
+        type=\"text\/css\" \/>\n   <link rel=\"stylesheet\" href=\".\/css\/bluishcoder.css\"
+        type=\"text\/css\">\n<\/head>\n<body>\n  <div class=\"container\">\n    <div
+        class=\"span-24 blog-header\">\n      <h1 id=\"blog-title\"><a href=\".\/index.html\">Bluish
+        Coder<\/a><\/h1>\n      <p id=\"blog-description\">Programming Languages,
+        Martials Arts and Computers. The Weblog of Chris Double.<\/p>\n    <\/div>\n    \n    <hr>\n    <div
+        class=\"span-20\">\n      \n\n  \n    <div class=\"post\">\n      <div class=\"span-2\"><p
+        class=\"small-heading\">2018-10-16<\/p><\/div>\n      <div class=\"span-18
+        last\">\n      <h2 class=\"post-title\"><a href=\".\/.\/2018\/10\/16\/generalized-algebraic-data-types-in-ats.html\">Generalized
+        Algebraic Data Types in ATS<\/a><\/h2>\n      <p>The <a href=\"http:\/\/www.ats-lang.org\/\">ATS
+        programming language<\/a> supports\ndefining Generalized Algebraic Data Types
+        (GADTS). They allow defining\ndatatypes where the constructors for the datatype
+        are explicitly\ndefined by the programmer. This has a number of uses and I''ll
+        go\nthrough some examples in this post. GADTs are sometimes referred to as\nGuarded
+        Recursive Datatypes.<\/p>\n\n<p>Some useful resources for reading up on GADTs
+        that I used to write\nthis post are:<\/p>\n\n<ul>\n<li><a href=\"https:\/\/en.wikipedia.org\/wiki\/Generalized_algebraic_data_type\">Wikipedia
+        page on GADT<\/a><\/li>\n<li><a href=\"https:\/\/en.wikibooks.org\/wiki\/Haskell\/GADT\">Haskell\/GADT
+        Wikibook<\/a><\/li>\n<li><a href=\"https:\/\/wiki.haskell.org\/GADTs_for_dummies\">GADTs
+        for Dummies<\/a><\/li>\n<li><a href=\"http:\/\/www.ats-lang.org\/MYDATA\/GRDT-popl03.pdf\">Guarded
+        Recursive Datatype Constructors<\/a><\/li>\n<\/ul>\n\n\n<p>The examples here
+        were tested with ATS2-0.3.11.<\/p>\n\n<h2>Arithmetic Expressions<\/h2>\n\n<p>This
+        is probably the most common demonstration of GADT usage and it''s\nuseful
+        to see how to do it in ATS. The example is taken from the\n<a href=\"https:\/\/en.wikibooks.org\/wiki\/Haskell\/GADT\">Haskell\/GADT
+        Wikibook<\/a>.<\/p>\n\n<p>First we''ll create datatype to represent a simple
+        expression language,\nand write an evaluation function for it, without using
+        GADTs:<\/p>\n\n<pre><code>#include \"share\/atspre_define.hats\"\n#include
+        \"share\/atspre_staload.hats\"\n\ndatatype Expr  =\n  | I of int\n  | Add
+        of (Expr, Expr)\n  | Mul of (Expr, Expr)\n\nfun eval (x:Expr): int =\n  case+
+        x of\n  | I i =&gt; i\n  | Add (t1, t2) =&gt; eval(t1) + eval(t2)\n  | Mul
+        (t1, t2) =&gt; eval(t1) * eval(t2)\n\n\nimplement main0() = let\n  val term
+        = Mul(I(2), I(4))\n  val res = eval(term)\nin\n  println!(\"res=\", res)\nend\n<\/code><\/pre>\n\n<p><code>Expr<\/code>
+        is a datatype with three constructors. <code>I<\/code> represents an\ninteger,
+        <code>Add<\/code> adds two expressions together and <code>Mul<\/code> multiples
+        two\nexpressions. The <code>eval<\/code> function pattern matches on these
+        and\nevaluates them. The example can be compiled with the following if\nplaced
+        in a file <code>arith1.dats<\/code>:<\/p>\n\n<pre><code>$ patscc -DATS_MEMALLOC_LIBC
+        -o arith1 arith1.dats\n$ .\/arith1\nres=8\n<\/code><\/pre>\n\n<p>Now we extend
+        the expression language with another type, booleans, and\nadd an <code>Expr<\/code>
+        constructor to compare for equality:<\/p>\n\n<pre><code>datatype Expr  =\n  |
+        I of int\n  | B of bool\n  | Add of (","datamd5":"0d974eb3d61bb5255f2339430c377eb3","device":{"class":"Web
+        Server"},"domain":"mh7mkfvezts5j6yu.onion","hostname":"mh7mkfvezts5j6yu.onion","onion":"mh7mkfvezts5j6yu.onion","os":"Linux","osdistribution":"Ubuntu","port":80,"product":"NGINX","productvendor":"Igor
+        Sysoev","productversion":"1.10.3","protocol":"http","protocolversion":"1.1","reason":"OK","seen_date":"2018-11-06","source":"onionscan","status":"200","tag":["ok"],"tls":"false","url":"\/"},{"@category":"onionscan","@timestamp":"2018-11-02T15:47:38.000Z","@type":"doc","app":{"extract":{"domain":["wikibooks.org","wikipedia.org","ats-lang.org","haskell.org"],"file":["grdt-popl03.pdf"],"hostname":["en.wikibooks.org","en.wikipedia.org","wiki.haskell.org","www.ats-lang.org"],"url":["http:\/\/www.ats-lang.org\/MYDATA\/GRDT-popl03.pdf","https:\/\/en.wikibooks.org\/wiki\/Haskell\/GADT","https:\/\/en.wikipedia.org\/wiki\/Generalized_algebraic_data_type","http:\/\/www.ats-lang.org\/","https:\/\/wiki.haskell.org\/GADTs_for_dummies"]},"http":{"bodymd5":"63b64b741f1f10c95f53cdad8b027edf","headermd5":"e316168414521f0da6d7f32f41642bd0","title":"Bluish
+        Coder"},"length":"4096"},"cpe":["cpe:\/a:igor_sysoev:nginx:1.10.3"],"data":"HTTP\/1.1
+        200 OK\r\nContent-Length: 93915\r\nETag: \"5bc71236-16edb\"\r\nDate: Fri,
+        02 Nov 2018 15:47:38 GMT\r\nLast-Modified: Wed, 17 Oct 2018 10:43:02 GMT\r\nServer:
+        nginx\/1.10.3 (Ubuntu)\r\nContent-Type: text\/html\r\nAccept-Ranges: bytes\r\nAge:
+        1\r\nConnection: keep-alive\r\n\r\n\n<!DOCTYPE html>\n<html>\n<head>\n   <meta
+        http-equiv=\"content-type\" content=\"text\/html; charset=utf-8\" \/>\n   <title>Bluish
+        Coder<\/title>\n   <meta name=\"author\" content=\"Chris Double\" \/>\n\n   <link
+        href=\".\/atom.xml\" rel=\"alternate\" title=\"Bluish Coder\" type=\"application\/atom+xml\"
+        \/>\n   <link rel=\"alternate\" type=\"application\/rss+xml\" title=\"RSS\"
+        href=\".\/rss.xml\"\/> \n\n   <link rel=\"stylesheet\" href=\".\/css\/screen.css\"
+        type=\"text\/css\" media=\"screen, projection\">\n   <link rel=\"stylesheet\"
+        href=\".\/css\/print.css\" type=\"text\/css\" media=\"print\">\n   <!--[if
+        lt IE 8]><link rel=\"stylesheet\" href=\".\/css\/ie.css\" type=\"text\/css\"
+        media=\"screen, projection\"><![endif]-->\n   <link rel=\"stylesheet\" href=\".\/css\/syntax.css\"
+        type=\"text\/css\" \/>\n   <link rel=\"stylesheet\" href=\".\/css\/bluishcoder.css\"
+        type=\"text\/css\">\n<\/head>\n<body>\n  <div class=\"container\">\n    <div
+        class=\"span-24 blog-header\">\n      <h1 id=\"blog-title\"><a href=\".\/index.html\">Bluish
+        Coder<\/a><\/h1>\n      <p id=\"blog-description\">Programming Languages,
+        Martials Arts and Computers. The Weblog of Chris Double.<\/p>\n    <\/div>\n    \n    <hr>\n    <div
+        class=\"span-20\">\n      \n\n  \n    <div class=\"post\">\n      <div class=\"span-2\"><p
+        class=\"small-heading\">2018-10-16<\/p><\/div>\n      <div class=\"span-18
+        last\">\n      <h2 class=\"post-title\"><a href=\".\/.\/2018\/10\/16\/generalized-algebraic-data-types-in-ats.html\">Generalized
+        Algebraic Data Types in ATS<\/a><\/h2>\n      <p>The <a href=\"http:\/\/www.ats-lang.org\/\">ATS
+        programming language<\/a> supports\ndefining Generalized Algebraic Data Types
+        (GADTS). They allow defining\ndatatypes where the constructors for the datatype
+        are explicitly\ndefined by the programmer. This has a number of uses and I''ll
+        go\nthrough some examples in this post. GADTs are sometimes referred to as\nGuarded
+        Recursive Datatypes.<\/p>\n\n<p>Some useful resources for reading up on GADTs
+        that I used to write\nthis post are:<\/p>\n\n<ul>\n<li><a href=\"https:\/\/en.wikipedia.org\/wiki\/Generalized_algebraic_data_type\">Wikipedia
+        page on GADT<\/a><\/li>\n<li><a href=\"https:\/\/en.wikibooks.org\/wiki\/Haskell\/GADT\">Haskell\/GADT
+        Wikibook<\/a><\/li>\n<li><a href=\"https:\/\/wiki.haskell.org\/GADTs_for_dummies\">GADTs
+        for Dummies<\/a><\/li>\n<li><a href=\"http:\/\/www.ats-lang.org\/MYDATA\/GRDT-popl03.pdf\">Guarded
+        Recursive Datatype Constructors<\/a><\/li>\n<\/ul>\n\n\n<p>The examples here
+        were tested with ATS2-0.3.11.<\/p>\n\n<h2>Arithmetic Expressions<\/h2>\n\n<p>This
+        is probably the most common demonstration of GADT usage and it''s\nuseful
+        to see how to do it in ATS. The example is taken from the\n<a href=\"https:\/\/en.wikibooks.org\/wiki\/Haskell\/GADT\">Haskell\/GADT
+        Wikibook<\/a>.<\/p>\n\n<p>First we''ll create datatype to represent a simple
+        expression language,\nand write an evaluation function for it, without using
+        GADTs:<\/p>\n\n<pre><code>#include \"share\/atspre_define.hats\"\n#include
+        \"share\/atspre_staload.hats\"\n\ndatatype Expr  =\n  | I of int\n  | Add
+        of (Expr, Expr)\n  | Mul of (Expr, Expr)\n\nfun eval (x:Expr): int =\n  case+
+        x of\n  | I i =&gt; i\n  | Add (t1, t2) =&gt; eval(t1) + eval(t2)\n  | Mul
+        (t1, t2) =&gt; eval(t1) * eval(t2)\n\n\nimplement main0() = let\n  val term
+        = Mul(I(2), I(4))\n  val res = eval(term)\nin\n  println!(\"res=\", res)\nend\n<\/code><\/pre>\n\n<p><code>Expr<\/code>
+        is a datatype with three constructors. <code>I<\/code> represents an\ninteger,
+        <code>Add<\/code> adds two expressions together and <code>Mul<\/code> multiples
+        two\nexpressions. The <code>eval<\/code> function pattern matches on these
+        and\nevaluates them. The example can be compiled with the following if\nplaced
+        in a file <code>arith1.dats<\/code>:<\/p>\n\n<pre><code>$ patscc -DATS_MEMALLOC_LIBC
+        -o arith1 arith1.dats\n$ .\/arith1\nres=8\n<\/code><\/pre>\n\n<p>Now we extend
+        the expression language with another type, booleans, and\nadd an <code>Expr<\/code>
+        constructor to compare for equality:<\/p>\n\n<pre><code>datatype Expr  =\n  |
+        I of int\n  | B of bool\n  | Add of (","datamd5":"0d974eb3d61bb5255f2339430c377eb3","device":{"class":"Web
+        Server"},"domain":"mh7mkfvezts5j6yu.onion","hostname":"mh7mkfvezts5j6yu.onion","onion":"mh7mkfvezts5j6yu.onion","os":"Linux","osdistribution":"Ubuntu","port":80,"product":"NGINX","productvendor":"Igor
+        Sysoev","productversion":"1.10.3","protocol":"http","protocolversion":"1.1","reason":"OK","seen_date":"2018-11-02","source":"onionscan","status":"200","tag":["ok"],"tls":"false","url":"\/"},{"@category":"onionscan","@timestamp":"2018-10-24T19:03:31.000Z","@type":"doc","app":{"extract":{"domain":["wikipedia.org","wikibooks.org","haskell.org","ats-lang.org"],"file":["grdt-popl03.pdf"],"hostname":["en.wikibooks.org","en.wikipedia.org","wiki.haskell.org","www.ats-lang.org"],"url":["http:\/\/www.ats-lang.org\/MYDATA\/GRDT-popl03.pdf","http:\/\/www.ats-lang.org\/","https:\/\/en.wikibooks.org\/wiki\/Haskell\/GADT","https:\/\/wiki.haskell.org\/GADTs_for_dummies","https:\/\/en.wikipedia.org\/wiki\/Generalized_algebraic_data_type"]},"http":{"bodymd5":"d41d8cd98f00b204e9800998ecf8427e","headermd5":"297ee2062d5eab6d7a30bd8656730536","title":"Bluish
+        Coder"},"length":"4096"},"cpe":["cpe:\/a:igor_sysoev:nginx:1.10.3"],"data":"HTTP\/1.1
+        200 OK\r\nContent-Length: 93915\r\nETag: \"5bc71236-16edb\"\r\nDate: Wed,
+        24 Oct 2018 19:03:31 GMT\r\nLast-Modified: Wed, 17 Oct 2018 10:43:02 GMT\r\nServer:
+        nginx\/1.10.3 (Ubuntu)\r\nContent-Type: text\/html\r\nAccept-Ranges: bytes\r\nConnection:
+        keep-alive\r\n\r\n\n<!DOCTYPE html>\n<html>\n<head>\n   <meta http-equiv=\"content-type\"
+        content=\"text\/html; charset=utf-8\" \/>\n   <title>Bluish Coder<\/title>\n   <meta
+        name=\"author\" content=\"Chris Double\" \/>\n\n   <link href=\".\/atom.xml\"
+        rel=\"alternate\" title=\"Bluish Coder\" type=\"application\/atom+xml\" \/>\n   <link
+        rel=\"alternate\" type=\"application\/rss+xml\" title=\"RSS\" href=\".\/rss.xml\"\/>
+        \n\n   <link rel=\"stylesheet\" href=\".\/css\/screen.css\" type=\"text\/css\"
+        media=\"screen, projection\">\n   <link rel=\"stylesheet\" href=\".\/css\/print.css\"
+        type=\"text\/css\" media=\"print\">\n   <!--[if lt IE 8]><link rel=\"stylesheet\"
+        href=\".\/css\/ie.css\" type=\"text\/css\" media=\"screen, projection\"><![endif]-->\n   <link
+        rel=\"stylesheet\" href=\".\/css\/syntax.css\" type=\"text\/css\" \/>\n   <link
+        rel=\"stylesheet\" href=\".\/css\/bluishcoder.css\" type=\"text\/css\">\n<\/head>\n<body>\n  <div
+        class=\"container\">\n    <div class=\"span-24 blog-header\">\n      <h1 id=\"blog-title\"><a
+        href=\".\/index.html\">Bluish Coder<\/a><\/h1>\n      <p id=\"blog-description\">Programming
+        Languages, Martials Arts and Computers. The Weblog of Chris Double.<\/p>\n    <\/div>\n    \n    <hr>\n    <div
+        class=\"span-20\">\n      \n\n  \n    <div class=\"post\">\n      <div class=\"span-2\"><p
+        class=\"small-heading\">2018-10-16<\/p><\/div>\n      <div class=\"span-18
+        last\">\n      <h2 class=\"post-title\"><a href=\".\/.\/2018\/10\/16\/generalized-algebraic-data-types-in-ats.html\">Generalized
+        Algebraic Data Types in ATS<\/a><\/h2>\n      <p>The <a href=\"http:\/\/www.ats-lang.org\/\">ATS
+        programming language<\/a> supports\ndefining Generalized Algebraic Data Types
+        (GADTS). They allow defining\ndatatypes where the constructors for the datatype
+        are explicitly\ndefined by the programmer. This has a number of uses and I''ll
+        go\nthrough some examples in this post. GADTs are sometimes referred to as\nGuarded
+        Recursive Datatypes.<\/p>\n\n<p>Some useful resources for reading up on GADTs
+        that I used to write\nthis post are:<\/p>\n\n<ul>\n<li><a href=\"https:\/\/en.wikipedia.org\/wiki\/Generalized_algebraic_data_type\">Wikipedia
+        page on GADT<\/a><\/li>\n<li><a href=\"https:\/\/en.wikibooks.org\/wiki\/Haskell\/GADT\">Haskell\/GADT
+        Wikibook<\/a><\/li>\n<li><a href=\"https:\/\/wiki.haskell.org\/GADTs_for_dummies\">GADTs
+        for Dummies<\/a><\/li>\n<li><a href=\"http:\/\/www.ats-lang.org\/MYDATA\/GRDT-popl03.pdf\">Guarded
+        Recursive Datatype Constructors<\/a><\/li>\n<\/ul>\n\n\n<p>The examples here
+        were tested with ATS2-0.3.11.<\/p>\n\n<h2>Arithmetic Expressions<\/h2>\n\n<p>This
+        is probably the most common demonstration of GADT usage and it''s\nuseful
+        to see how to do it in ATS. The example is taken from the\n<a href=\"https:\/\/en.wikibooks.org\/wiki\/Haskell\/GADT\">Haskell\/GADT
+        Wikibook<\/a>.<\/p>\n\n<p>First we''ll create datatype to represent a simple
+        expression language,\nand write an evaluation function for it, without using
+        GADTs:<\/p>\n\n<pre><code>#include \"share\/atspre_define.hats\"\n#include
+        \"share\/atspre_staload.hats\"\n\ndatatype Expr  =\n  | I of int\n  | Add
+        of (Expr, Expr)\n  | Mul of (Expr, Expr)\n\nfun eval (x:Expr): int =\n  case+
+        x of\n  | I i =&gt; i\n  | Add (t1, t2) =&gt; eval(t1) + eval(t2)\n  | Mul
+        (t1, t2) =&gt; eval(t1) * eval(t2)\n\n\nimplement main0() = let\n  val term
+        = Mul(I(2), I(4))\n  val res = eval(term)\nin\n  println!(\"res=\", res)\nend\n<\/code><\/pre>\n\n<p><code>Expr<\/code>
+        is a datatype with three constructors. <code>I<\/code> represents an\ninteger,
+        <code>Add<\/code> adds two expressions together and <code>Mul<\/code> multiples
+        two\nexpressions. The <code>eval<\/code> function pattern matches on these
+        and\nevaluates them. The example can be compiled with the following if\nplaced
+        in a file <code>arith1.dats<\/code>:<\/p>\n\n<pre><code>$ patscc -DATS_MEMALLOC_LIBC
+        -o arith1 arith1.dats\n$ .\/arith1\nres=8\n<\/code><\/pre>\n\n<p>Now we extend
+        the expression language with another type, booleans, and\nadd an <code>Expr<\/code>
+        constructor to compare for equality:<\/p>\n\n<pre><code>datatype Expr  =\n  |
+        I of int\n  | B of bool\n  | Add of (Expr, Ex","datamd5":"6f50408650910af16c5f8b229202264e","device":{"class":"Web
+        Server"},"domain":"mh7mkfvezts5j6yu.onion","hostname":"mh7mkfvezts5j6yu.onion","onion":"mh7mkfvezts5j6yu.onion","os":"Linux","osdistribution":"Ubuntu","port":80,"product":"Nginx","productvendor":"Igor
+        Sysoev","productversion":"1.10.3","protocol":"http","protocolversion":"1.1","reason":"OK","seen_date":"2018-10-24","source":"datascan","status":"200","tag":["ok"],"tls":"false","url":"\/"}],"status":"ok","took":"0.121","total":6}'
+    http_version: 
+  recorded_at: Sat, 17 Nov 2018 23:45:08 GMT
+recorded_with: VCR 4.0.0

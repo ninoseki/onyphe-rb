@@ -23,6 +23,12 @@ RSpec.configure do |config|
   end
 end
 
+require_relative "./support/helpers/io_helper"
+
+RSpec.configure do |config|
+  config.include Spec::Support::IOHelper
+end
+
 def myip
   @myip ||= Net::HTTP.get(URI("https://api.ipify.org"))
 end
@@ -37,5 +43,3 @@ VCR.configure do |config|
   config.filter_sensitive_data("<API_KEY>") { ENV["ONYPHE_API_KEY"] }
   config.filter_sensitive_data("<MY_IP>") { myip }
 end
-
-

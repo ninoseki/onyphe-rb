@@ -21,6 +21,8 @@ require "onyphe/clients/synscan"
 require "onyphe/clients/threatlist"
 require "onyphe/clients/search"
 
+require "onyphe/cli"
+
 require "onyphe/version"
 
 module Onyphe
