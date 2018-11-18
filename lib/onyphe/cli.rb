@@ -74,7 +74,11 @@ module Onyphe
       def with_error_handling
         yield
       rescue StandardError => e
-        puts "Warning: #{e}"
+        if e.to_s == "'api_key' argument is required"
+          puts "Please set your API key as an environment variable `ONYPHE_API_KEY`"
+        else
+          puts "Warning: #{e}"
+        end
       end
 
       def api
