@@ -1,0 +1,39 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.onyphe.io/api/search/synscan/port:23%20country:FR%20tag:mirai?apikey=<API_KEY>&page=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - www.onyphe.io
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 29 Aug 2019 12:07:55 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '2961'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"count":8,"error":0,"max_page":1,"myip":"<MY_IP>","page":1,"results":[{"@category":"synscan","@timestamp":"2019-08-23T17:15:02.000Z","@type":"doc","asn":"AS3215","city":"Poussan","country":"FR","ip":"80.13.219.10","ipv6":"false","location":"43.4881,3.6697","organization":"Orange","os":"Unknown","port":"23","seen_date":"2019-08-23","source":"sniffer","subnet":"80.13.219.0\/24","tag":["botnet","compromised","mirai","worm"]},{"@category":"synscan","@timestamp":"2019-08-19T18:29:13.000Z","@type":"doc","asn":"AS3215","city":"Lyon","country":"FR","ip":"92.154.3.94","ipv6":"false","location":"45.6961,4.9389","organization":"Orange","os":"Linux","port":"23","seen_date":"2019-08-19","source":"sniffer","subnet":"92.154.3.0\/24","tag":["botnet","compromised","mirai","worm"]},{"@category":"synscan","@timestamp":"2019-08-15T08:07:05.000Z","@type":"doc","asn":"AS3215","city":"Bar-le-Duc","country":"FR","ip":"83.196.92.41","ipv6":"false","location":"48.7727,5.1611","organization":"Orange","os":"Linux","port":"23","seen_date":"2019-08-15","source":"sniffer","subnet":"83.196.92.0\/23","tag":["botnet","compromised","mirai","worm"]},{"@category":"synscan","@timestamp":"2019-08-14T16:13:54.000Z","@type":"doc","asn":"AS3215","city":"Paris","country":"FR","ip":"90.88.56.170","ipv6":"false","location":"48.8543,2.3527","organization":"Orange","os":"Linux","port":"23","seen_date":"2019-08-14","source":"sniffer","subnet":"90.88.56.0\/23","tag":["botnet","compromised","mirai","worm"]},{"@category":"synscan","@timestamp":"2019-08-09T19:27:27.000Z","@type":"doc","asn":"AS3215","city":"Moulins","country":"FR","ip":"2.3.213.219","ipv6":"false","location":"46.5667,3.3333","organization":"Orange","os":"Linux","port":"23","seen_date":"2019-08-09","source":"sniffer","subnet":"2.3.212.0\/22","tag":["botnet","compromised","mirai","worm"]},{"@category":"synscan","@timestamp":"2019-08-09T10:58:01.000Z","@type":"doc","asn":"AS3215","city":"Esbly","country":"FR","ip":"90.88.113.67","ipv6":"false","location":"48.9052,2.8124","organization":"Orange","os":"Linux","port":"23","seen_date":"2019-08-09","source":"sniffer","subnet":"90.88.112.0\/21","tag":["botnet","compromised","mirai","worm"]},{"@category":"synscan","@timestamp":"2019-08-08T05:29:25.000Z","@type":"doc","asn":"AS39473","city":"Sauvagnon","country":"FR","ip":"46.182.211.106","ipv6":"false","location":"43.4000,-0.3833","organization":"Ariane
+        Network SASU","os":"Linux","port":"23","seen_date":"2019-08-08","source":"sniffer","subnet":"46.182.211.0\/24","tag":["botnet","compromised","mirai","worm"]},{"@category":"synscan","@timestamp":"2019-08-07T16:15:11.000Z","@type":"doc","asn":"AS3215","city":"Frevent","country":"FR","ip":"80.13.36.250","ipv6":"false","location":"50.2761,2.2872","organization":"Orange","os":"Linux","port":"23","seen_date":"2019-08-07","source":"sniffer","subnet":"80.13.36.0\/24","tag":["botnet","compromised","mirai","worm"]}],"status":"ok","took":"0.062","total":8}'
+    http_version: 
+  recorded_at: Thu, 29 Aug 2019 12:07:55 GMT
+recorded_with: VCR 5.0.0

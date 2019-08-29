@@ -8,21 +8,21 @@ module Onyphe
     def self.valid_ip?(ip)
       IPAddr.new ip
       true
-    rescue IPAddr::InvalidAddressError => _
+    rescue IPAddr::InvalidAddressError => _e
       false
     end
 
     def self.valid_domain?(domain)
       uri = URI("https://#{domain}")
       uri.hostname == domain && domain.include?(".") && !valid_ip?(domain)
-    rescue ArgumentError => _
+    rescue ArgumentError => _e
       false
     end
 
     def self.valid_onion_domain?(domain)
       uri = URI("https://#{domain}")
       uri.hostname == domain && domain.end_with?(".onion")
-    rescue ArgumentError => _
+    rescue ArgumentError => _e
       false
     end
 

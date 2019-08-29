@@ -1,0 +1,366 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.onyphe.io/api/onionscan/mh7mkfvezts5j6yu.onion?apikey=<API_KEY>&page=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - www.onyphe.io
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 29 Aug 2019 12:06:38 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '35218'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"count":6,"error":0,"max_page":1,"myip":"<MY_IP>","page":1,"results":[{"@category":"onionscan","@timestamp":"2019-08-24T12:33:44.000Z","@type":"doc","app":{"extract":{"domain":["blogspot.com","princexml.com","mercurylang.org","github.com"],"file":["atom.xml","rss.xml"],"hostname":["adventuresinmercury.blogspot.com","dl.mercurylang.org","github.com","www.mercurylang.org","www.princexml.com"],"url":["https:\/\/www.princexml.com\/","https:\/\/adventuresinmercury.blogspot.com\/","https:\/\/www.mercurylang.org\/","https:\/\/github.com\/Mercury-Language\/mercury\/blob\/master\/README.bootstrap","http:\/\/dl.mercurylang.org\/rotd\/mercury-srcdist-rotd-2019-06-22.tar.gz","https:\/\/adventuresinmercury.blogspot.com\/2011\/11\/making-grade.html","http:\/\/dl.mercurylang.org\/index.html"]},"http":{"bodymd5":"ceed964a59ce401e3b16cfe4f9993ed6","headermd5":"e316168414521f0da6d7f32f41642bd0","title":"Bluish
+        Coder"},"length":"4096"},"cpe":["cpe:\/a:igor_sysoev:nginx:1.10.3"],"cpecount":1,"data":"HTTP\/1.1
+        200 OK\r\nContent-Length: 95012\r\nETag: \"5d0f733f-17324\"\r\nDate: Sat,
+        24 Aug 2019 12:33:43 GMT\r\nLast-Modified: Sun, 23 Jun 2019 12:40:31 GMT\r\nServer:
+        nginx\/1.10.3 (Ubuntu)\r\nContent-Type: text\/html\r\nAccept-Ranges: bytes\r\nAge:
+        1\r\nConnection: keep-alive\r\n\r\n\n<!DOCTYPE html>\n<html>\n<head>\n   <meta
+        http-equiv=\"content-type\" content=\"text\/html; charset=utf-8\" \/>\n   <title>Bluish
+        Coder<\/title>\n   <meta name=\"author\" content=\"Chris Double\" \/>\n\n   <link
+        href=\".\/atom.xml\" rel=\"alternate\" title=\"Bluish Coder\" type=\"application\/atom+xml\"
+        \/>\n   <link rel=\"alternate\" type=\"application\/rss+xml\" title=\"RSS\"
+        href=\".\/rss.xml\"\/> \n\n   <link rel=\"stylesheet\" href=\".\/css\/screen.css\"
+        type=\"text\/css\" media=\"screen, projection\">\n   <link rel=\"stylesheet\"
+        href=\".\/css\/print.css\" type=\"text\/css\" media=\"print\">\n   <!--[if
+        lt IE 8]><link rel=\"stylesheet\" href=\".\/css\/ie.css\" type=\"text\/css\"
+        media=\"screen, projection\"><![endif]-->\n   <link rel=\"stylesheet\" href=\".\/css\/syntax.css\"
+        type=\"text\/css\" \/>\n   <link rel=\"stylesheet\" href=\".\/css\/bluishcoder.css\"
+        type=\"text\/css\">\n<\/head>\n<body>\n  <div class=\"container\">\n    <div
+        class=\"span-24 blog-header\">\n      <h1 id=\"blog-title\"><a href=\".\/index.html\">Bluish
+        Coder<\/a><\/h1>\n      <p id=\"blog-description\">Programming Languages,
+        Martials Arts and Computers. The Weblog of Chris Double.<\/p>\n    <\/div>\n    \n    <hr>\n    <div
+        class=\"span-20\">\n      \n\n  \n    <div class=\"post\">\n      <div class=\"span-2\"><p
+        class=\"small-heading\">2019-06-23<\/p><\/div>\n      <div class=\"span-18
+        last\">\n      <h2 class=\"post-title\"><a href=\".\/.\/2019\/06\/23\/getting-started-with-mercury.html\">Getting
+        Started with Mercury<\/a><\/h2>\n      <p><a href=\"https:\/\/www.mercurylang.org\/\">Mercury<\/a>
+        is a logic programming\nlanguage, similar to Prolog, but with static types.
+        It feels like a\ncombination of SML and Prolog at times. It was designed to
+        help with\nprogramming large systems - that is large programs, large teams
+        and\nbetter reliability, etc. The commercial product <a href=\"https:\/\/www.princexml.com\/\">Prince\nXML<\/a>
+        is written in Mercury.<\/p>\n\n<p>I''ve played around with Mercury in the
+        past but haven''t done anything\nsubstantial with it. Recently I picked it
+        up again. This post is a\nshort introduction to building Mercury, and some
+        example \"Hello World\"\nstyle programs to test the install.<\/p>\n\n<h2>Build<\/h2>\n\n<p>Mercury
+        is written in the Mercury language itself. This means it needs\na Mercury
+        compiler to bootstrap from. The way I got a build going from\nsource was to
+        download the source for a <a href=\"http:\/\/dl.mercurylang.org\/index.html\">release
+        of the\nday<\/a> version, build that, then\nuse that build to build the Mercury
+        source from github. The steps are\noutlined in the <a href=\"https:\/\/github.com\/Mercury-Language\/mercury\/blob\/master\/README.bootstrap\">README.bootstrap<\/a>\nfile,
+        but the following commands are the basic steps:<\/p>\n\n<pre><code>$ wget
+        http:\/\/dl.mercurylang.org\/rotd\/mercury-srcdist-rotd-2019-06-22.tar.gz\n$
+        tar xvf mercury-srcdist-rotd-2019-06-22.tar.gz\n$ cd mercury-srcdist-rotd-2019-06-22\n$
+        .\/configure --enable-minimal-install --prefix=\/tmp\/mercury\n$ make\n$ make
+        install\n$ cd ..\n$ export PATH=\/tmp\/mercury\/bin:$PATH\n<\/code><\/pre>\n\n<p>With
+        this minimal compiler the main source can be built. Mercury has a\nnumber
+        of backends, called ''grades'' in the documentation. Each of\nthese grades
+        makes a number of tradeoffs in terms of generated\ncode. They define the platform
+        (C, assembler, Java, etc), whether GC\nis used, what type of threading model
+        is available (if any), etc. The\n<a href=\"https:\/\/adventuresinmercury.blogspot.com\/\">Adventures
+        in Mercury<\/a>\nblog has an <a href=\"https:\/\/adventuresinmercury.blogspot.com\/2011\/11\/making-grade.html\">article
+        on some of the different\ngrades<\/a>. Building\nall of them can take a long
+        time - multiple hours - so it pays to\nlimit it if you don''t need some of
+        the backends.<\/p>\n\n<p>For my purposes I didn''t need the CSharp backend,
+        but wanted to\nexplore the others. I was ok with the time tradeoff of building
+        the\nsystem. To build from the <code>master<\/code> branch of the github repository
+        I\ndid the following steps:<\/p>","datamd5":"dc83734e53b63b2b74f1dc09f118e889","device":{"class":"Web
+        Server"},"domain":"mh7mkfvezts5j6yu.onion","forward":"mh7mkfvezts5j6yu.onion","hostname":"mh7mkfvezts5j6yu.onion","onion":"mh7mkfvezts5j6yu.onion","os":"Linux","osdistribution":"Ubuntu","osvendor":"Linux","port":"80","product":"NGINX","productvendor":"Igor
+        Sysoev","productversion":"1.10.3","protocol":"http","protocolversion":"1.1","reason":"OK","seen_date":"2019-08-24","source":"onionscan","status":"200","tag":["ok"],"tls":"false","transport":"tcp","url":"\/"},{"@category":"onionscan","@timestamp":"2019-08-18T09:08:46.000Z","@type":"doc","app":{"extract":{"domain":["mercurylang.org","princexml.com","blogspot.com","github.com"],"file":["rss.xml","atom.xml"],"hostname":["adventuresinmercury.blogspot.com","dl.mercurylang.org","github.com","www.mercurylang.org","www.princexml.com"],"url":["https:\/\/github.com\/Mercury-Language\/mercury\/blob\/master\/README.bootstrap","http:\/\/dl.mercurylang.org\/index.html","http:\/\/dl.mercurylang.org\/rotd\/mercury-srcdist-rotd-2019-06-22.tar.gz","https:\/\/adventuresinmercury.blogspot.com\/2011\/11\/making-grade.html","https:\/\/www.mercurylang.org\/","https:\/\/adventuresinmercury.blogspot.com\/","https:\/\/www.princexml.com\/"]},"http":{"bodymd5":"ceed964a59ce401e3b16cfe4f9993ed6","headermd5":"e316168414521f0da6d7f32f41642bd0","title":"Bluish
+        Coder"},"length":"4096"},"cpe":["cpe:\/a:igor_sysoev:nginx:1.10.3"],"cpecount":1,"data":"HTTP\/1.1
+        200 OK\r\nContent-Length: 95012\r\nETag: \"5d0f733f-17324\"\r\nDate: Sun,
+        18 Aug 2019 09:08:46 GMT\r\nLast-Modified: Sun, 23 Jun 2019 12:40:31 GMT\r\nServer:
+        nginx\/1.10.3 (Ubuntu)\r\nContent-Type: text\/html\r\nAccept-Ranges: bytes\r\nAge:
+        1\r\nConnection: keep-alive\r\n\r\n\n<!DOCTYPE html>\n<html>\n<head>\n   <meta
+        http-equiv=\"content-type\" content=\"text\/html; charset=utf-8\" \/>\n   <title>Bluish
+        Coder<\/title>\n   <meta name=\"author\" content=\"Chris Double\" \/>\n\n   <link
+        href=\".\/atom.xml\" rel=\"alternate\" title=\"Bluish Coder\" type=\"application\/atom+xml\"
+        \/>\n   <link rel=\"alternate\" type=\"application\/rss+xml\" title=\"RSS\"
+        href=\".\/rss.xml\"\/> \n\n   <link rel=\"stylesheet\" href=\".\/css\/screen.css\"
+        type=\"text\/css\" media=\"screen, projection\">\n   <link rel=\"stylesheet\"
+        href=\".\/css\/print.css\" type=\"text\/css\" media=\"print\">\n   <!--[if
+        lt IE 8]><link rel=\"stylesheet\" href=\".\/css\/ie.css\" type=\"text\/css\"
+        media=\"screen, projection\"><![endif]-->\n   <link rel=\"stylesheet\" href=\".\/css\/syntax.css\"
+        type=\"text\/css\" \/>\n   <link rel=\"stylesheet\" href=\".\/css\/bluishcoder.css\"
+        type=\"text\/css\">\n<\/head>\n<body>\n  <div class=\"container\">\n    <div
+        class=\"span-24 blog-header\">\n      <h1 id=\"blog-title\"><a href=\".\/index.html\">Bluish
+        Coder<\/a><\/h1>\n      <p id=\"blog-description\">Programming Languages,
+        Martials Arts and Computers. The Weblog of Chris Double.<\/p>\n    <\/div>\n    \n    <hr>\n    <div
+        class=\"span-20\">\n      \n\n  \n    <div class=\"post\">\n      <div class=\"span-2\"><p
+        class=\"small-heading\">2019-06-23<\/p><\/div>\n      <div class=\"span-18
+        last\">\n      <h2 class=\"post-title\"><a href=\".\/.\/2019\/06\/23\/getting-started-with-mercury.html\">Getting
+        Started with Mercury<\/a><\/h2>\n      <p><a href=\"https:\/\/www.mercurylang.org\/\">Mercury<\/a>
+        is a logic programming\nlanguage, similar to Prolog, but with static types.
+        It feels like a\ncombination of SML and Prolog at times. It was designed to
+        help with\nprogramming large systems - that is large programs, large teams
+        and\nbetter reliability, etc. The commercial product <a href=\"https:\/\/www.princexml.com\/\">Prince\nXML<\/a>
+        is written in Mercury.<\/p>\n\n<p>I''ve played around with Mercury in the
+        past but haven''t done anything\nsubstantial with it. Recently I picked it
+        up again. This post is a\nshort introduction to building Mercury, and some
+        example \"Hello World\"\nstyle programs to test the install.<\/p>\n\n<h2>Build<\/h2>\n\n<p>Mercury
+        is written in the Mercury language itself. This means it needs\na Mercury
+        compiler to bootstrap from. The way I got a build going from\nsource was to
+        download the source for a <a href=\"http:\/\/dl.mercurylang.org\/index.html\">release
+        of the\nday<\/a> version, build that, then\nuse that build to build the Mercury
+        source from github. The steps are\noutlined in the <a href=\"https:\/\/github.com\/Mercury-Language\/mercury\/blob\/master\/README.bootstrap\">README.bootstrap<\/a>\nfile,
+        but the following commands are the basic steps:<\/p>\n\n<pre><code>$ wget
+        http:\/\/dl.mercurylang.org\/rotd\/mercury-srcdist-rotd-2019-06-22.tar.gz\n$
+        tar xvf mercury-srcdist-rotd-2019-06-22.tar.gz\n$ cd mercury-srcdist-rotd-2019-06-22\n$
+        .\/configure --enable-minimal-install --prefix=\/tmp\/mercury\n$ make\n$ make
+        install\n$ cd ..\n$ export PATH=\/tmp\/mercury\/bin:$PATH\n<\/code><\/pre>\n\n<p>With
+        this minimal compiler the main source can be built. Mercury has a\nnumber
+        of backends, called ''grades'' in the documentation. Each of\nthese grades
+        makes a number of tradeoffs in terms of generated\ncode. They define the platform
+        (C, assembler, Java, etc), whether GC\nis used, what type of threading model
+        is available (if any), etc. The\n<a href=\"https:\/\/adventuresinmercury.blogspot.com\/\">Adventures
+        in Mercury<\/a>\nblog has an <a href=\"https:\/\/adventuresinmercury.blogspot.com\/2011\/11\/making-grade.html\">article
+        on some of the different\ngrades<\/a>. Building\nall of them can take a long
+        time - multiple hours - so it pays to\nlimit it if you don''t need some of
+        the backends.<\/p>\n\n<p>For my purposes I didn''t need the CSharp backend,
+        but wanted to\nexplore the others. I was ok with the time tradeoff of building
+        the\nsystem. To build from the <code>master<\/code> branch of the github repository
+        I\ndid the following steps:<\/p>","datamd5":"dc83734e53b63b2b74f1dc09f118e889","device":{"class":"Web
+        Server"},"domain":"mh7mkfvezts5j6yu.onion","forward":"mh7mkfvezts5j6yu.onion","hostname":"mh7mkfvezts5j6yu.onion","onion":"mh7mkfvezts5j6yu.onion","os":"Linux","osdistribution":"Ubuntu","osvendor":"Linux","port":"80","product":"NGINX","productvendor":"Igor
+        Sysoev","productversion":"1.10.3","protocol":"http","protocolversion":"1.1","reason":"OK","seen_date":"2019-08-18","source":"onionscan","status":"200","tag":["ok"],"tls":"false","transport":"tcp","url":"\/"},{"@category":"onionscan","@timestamp":"2019-08-16T23:02:28.000Z","@type":"doc","app":{"extract":{"domain":["github.com","princexml.com","blogspot.com","mercurylang.org"],"file":["rss.xml","atom.xml"],"hostname":["adventuresinmercury.blogspot.com","dl.mercurylang.org","github.com","www.mercurylang.org","www.princexml.com"],"url":["https:\/\/adventuresinmercury.blogspot.com\/","http:\/\/dl.mercurylang.org\/index.html","https:\/\/github.com\/Mercury-Language\/mercury\/blob\/master\/README.bootstrap","https:\/\/www.mercurylang.org\/","https:\/\/www.princexml.com\/","https:\/\/adventuresinmercury.blogspot.com\/2011\/11\/making-grade.html","http:\/\/dl.mercurylang.org\/rotd\/mercury-srcdist-rotd-2019-06-22.tar.gz"]},"http":{"bodymd5":"ceed964a59ce401e3b16cfe4f9993ed6","headermd5":"a2537e6fbaeb085ff0380c9144ee74fe","title":"Bluish
+        Coder"},"length":"4096"},"cpe":["cpe:\/a:igor_sysoev:nginx:1.10.3"],"cpecount":1,"data":"HTTP\/1.1
+        200 OK\r\nContent-Length: 95012\r\nETag: \"5d0f733f-17324\"\r\nDate: Fri,
+        16 Aug 2019 23:02:28 GMT\r\nLast-Modified: Sun, 23 Jun 2019 12:40:31 GMT\r\nServer:
+        nginx\/1.10.3 (Ubuntu)\r\nContent-Type: text\/html\r\nAccept-Ranges: bytes\r\nConnection:
+        keep-alive\r\n\r\n\n<!DOCTYPE html>\n<html>\n<head>\n   <meta http-equiv=\"content-type\"
+        content=\"text\/html; charset=utf-8\" \/>\n   <title>Bluish Coder<\/title>\n   <meta
+        name=\"author\" content=\"Chris Double\" \/>\n\n   <link href=\".\/atom.xml\"
+        rel=\"alternate\" title=\"Bluish Coder\" type=\"application\/atom+xml\" \/>\n   <link
+        rel=\"alternate\" type=\"application\/rss+xml\" title=\"RSS\" href=\".\/rss.xml\"\/>
+        \n\n   <link rel=\"stylesheet\" href=\".\/css\/screen.css\" type=\"text\/css\"
+        media=\"screen, projection\">\n   <link rel=\"stylesheet\" href=\".\/css\/print.css\"
+        type=\"text\/css\" media=\"print\">\n   <!--[if lt IE 8]><link rel=\"stylesheet\"
+        href=\".\/css\/ie.css\" type=\"text\/css\" media=\"screen, projection\"><![endif]-->\n   <link
+        rel=\"stylesheet\" href=\".\/css\/syntax.css\" type=\"text\/css\" \/>\n   <link
+        rel=\"stylesheet\" href=\".\/css\/bluishcoder.css\" type=\"text\/css\">\n<\/head>\n<body>\n  <div
+        class=\"container\">\n    <div class=\"span-24 blog-header\">\n      <h1 id=\"blog-title\"><a
+        href=\".\/index.html\">Bluish Coder<\/a><\/h1>\n      <p id=\"blog-description\">Programming
+        Languages, Martials Arts and Computers. The Weblog of Chris Double.<\/p>\n    <\/div>\n    \n    <hr>\n    <div
+        class=\"span-20\">\n      \n\n  \n    <div class=\"post\">\n      <div class=\"span-2\"><p
+        class=\"small-heading\">2019-06-23<\/p><\/div>\n      <div class=\"span-18
+        last\">\n      <h2 class=\"post-title\"><a href=\".\/.\/2019\/06\/23\/getting-started-with-mercury.html\">Getting
+        Started with Mercury<\/a><\/h2>\n      <p><a href=\"https:\/\/www.mercurylang.org\/\">Mercury<\/a>
+        is a logic programming\nlanguage, similar to Prolog, but with static types.
+        It feels like a\ncombination of SML and Prolog at times. It was designed to
+        help with\nprogramming large systems - that is large programs, large teams
+        and\nbetter reliability, etc. The commercial product <a href=\"https:\/\/www.princexml.com\/\">Prince\nXML<\/a>
+        is written in Mercury.<\/p>\n\n<p>I''ve played around with Mercury in the
+        past but haven''t done anything\nsubstantial with it. Recently I picked it
+        up again. This post is a\nshort introduction to building Mercury, and some
+        example \"Hello World\"\nstyle programs to test the install.<\/p>\n\n<h2>Build<\/h2>\n\n<p>Mercury
+        is written in the Mercury language itself. This means it needs\na Mercury
+        compiler to bootstrap from. The way I got a build going from\nsource was to
+        download the source for a <a href=\"http:\/\/dl.mercurylang.org\/index.html\">release
+        of the\nday<\/a> version, build that, then\nuse that build to build the Mercury
+        source from github. The steps are\noutlined in the <a href=\"https:\/\/github.com\/Mercury-Language\/mercury\/blob\/master\/README.bootstrap\">README.bootstrap<\/a>\nfile,
+        but the following commands are the basic steps:<\/p>\n\n<pre><code>$ wget
+        http:\/\/dl.mercurylang.org\/rotd\/mercury-srcdist-rotd-2019-06-22.tar.gz\n$
+        tar xvf mercury-srcdist-rotd-2019-06-22.tar.gz\n$ cd mercury-srcdist-rotd-2019-06-22\n$
+        .\/configure --enable-minimal-install --prefix=\/tmp\/mercury\n$ make\n$ make
+        install\n$ cd ..\n$ export PATH=\/tmp\/mercury\/bin:$PATH\n<\/code><\/pre>\n\n<p>With
+        this minimal compiler the main source can be built. Mercury has a\nnumber
+        of backends, called ''grades'' in the documentation. Each of\nthese grades
+        makes a number of tradeoffs in terms of generated\ncode. They define the platform
+        (C, assembler, Java, etc), whether GC\nis used, what type of threading model
+        is available (if any), etc. The\n<a href=\"https:\/\/adventuresinmercury.blogspot.com\/\">Adventures
+        in Mercury<\/a>\nblog has an <a href=\"https:\/\/adventuresinmercury.blogspot.com\/2011\/11\/making-grade.html\">article
+        on some of the different\ngrades<\/a>. Building\nall of them can take a long
+        time - multiple hours - so it pays to\nlimit it if you don''t need some of
+        the backends.<\/p>\n\n<p>For my purposes I didn''t need the CSharp backend,
+        but wanted to\nexplore the others. I was ok with the time tradeoff of building
+        the\nsystem. To build from the <code>master<\/code> branch of the github repository
+        I\ndid the following steps:<\/p>\n\n<pre><","datamd5":"ce80c443ce82c2ce1f27765d8ea461a3","device":{"class":"Web
+        Server"},"domain":"mh7mkfvezts5j6yu.onion","forward":"mh7mkfvezts5j6yu.onion","hostname":"mh7mkfvezts5j6yu.onion","onion":"mh7mkfvezts5j6yu.onion","os":"Linux","osdistribution":"Ubuntu","osvendor":"Linux","port":"80","product":"NGINX","productvendor":"Igor
+        Sysoev","productversion":"1.10.3","protocol":"http","protocolversion":"1.1","reason":"OK","seen_date":"2019-08-16","source":"onionscan","status":"200","tag":["ok"],"tls":"false","transport":"tcp","url":"\/"},{"@category":"onionscan","@timestamp":"2019-08-08T22:45:46.000Z","@type":"doc","app":{"extract":{"domain":["blogspot.com","princexml.com","mercurylang.org","github.com"],"file":["atom.xml","rss.xml"],"hostname":["adventuresinmercury.blogspot.com","dl.mercurylang.org","github.com","www.mercurylang.org","www.princexml.com"],"url":["http:\/\/dl.mercurylang.org\/rotd\/mercury-srcdist-rotd-2019-06-22.tar.gz","https:\/\/adventuresinmercury.blogspot.com\/2011\/11\/making-grade.html","https:\/\/www.princexml.com\/","https:\/\/github.com\/Mercury-Language\/mercury\/blob\/master\/README.bootstrap","http:\/\/dl.mercurylang.org\/index.html","https:\/\/www.mercurylang.org\/","https:\/\/adventuresinmercury.blogspot.com\/"]},"http":{"bodymd5":"ceed964a59ce401e3b16cfe4f9993ed6","headermd5":"a2537e6fbaeb085ff0380c9144ee74fe","title":"Bluish
+        Coder"},"length":"4096"},"cpe":["cpe:\/a:igor_sysoev:nginx:1.10.3"],"cpecount":1,"data":"HTTP\/1.1
+        200 OK\r\nContent-Length: 95012\r\nETag: \"5d0f733f-17324\"\r\nDate: Thu,
+        08 Aug 2019 22:45:46 GMT\r\nLast-Modified: Sun, 23 Jun 2019 12:40:31 GMT\r\nServer:
+        nginx\/1.10.3 (Ubuntu)\r\nContent-Type: text\/html\r\nAccept-Ranges: bytes\r\nConnection:
+        keep-alive\r\n\r\n\n<!DOCTYPE html>\n<html>\n<head>\n   <meta http-equiv=\"content-type\"
+        content=\"text\/html; charset=utf-8\" \/>\n   <title>Bluish Coder<\/title>\n   <meta
+        name=\"author\" content=\"Chris Double\" \/>\n\n   <link href=\".\/atom.xml\"
+        rel=\"alternate\" title=\"Bluish Coder\" type=\"application\/atom+xml\" \/>\n   <link
+        rel=\"alternate\" type=\"application\/rss+xml\" title=\"RSS\" href=\".\/rss.xml\"\/>
+        \n\n   <link rel=\"stylesheet\" href=\".\/css\/screen.css\" type=\"text\/css\"
+        media=\"screen, projection\">\n   <link rel=\"stylesheet\" href=\".\/css\/print.css\"
+        type=\"text\/css\" media=\"print\">\n   <!--[if lt IE 8]><link rel=\"stylesheet\"
+        href=\".\/css\/ie.css\" type=\"text\/css\" media=\"screen, projection\"><![endif]-->\n   <link
+        rel=\"stylesheet\" href=\".\/css\/syntax.css\" type=\"text\/css\" \/>\n   <link
+        rel=\"stylesheet\" href=\".\/css\/bluishcoder.css\" type=\"text\/css\">\n<\/head>\n<body>\n  <div
+        class=\"container\">\n    <div class=\"span-24 blog-header\">\n      <h1 id=\"blog-title\"><a
+        href=\".\/index.html\">Bluish Coder<\/a><\/h1>\n      <p id=\"blog-description\">Programming
+        Languages, Martials Arts and Computers. The Weblog of Chris Double.<\/p>\n    <\/div>\n    \n    <hr>\n    <div
+        class=\"span-20\">\n      \n\n  \n    <div class=\"post\">\n      <div class=\"span-2\"><p
+        class=\"small-heading\">2019-06-23<\/p><\/div>\n      <div class=\"span-18
+        last\">\n      <h2 class=\"post-title\"><a href=\".\/.\/2019\/06\/23\/getting-started-with-mercury.html\">Getting
+        Started with Mercury<\/a><\/h2>\n      <p><a href=\"https:\/\/www.mercurylang.org\/\">Mercury<\/a>
+        is a logic programming\nlanguage, similar to Prolog, but with static types.
+        It feels like a\ncombination of SML and Prolog at times. It was designed to
+        help with\nprogramming large systems - that is large programs, large teams
+        and\nbetter reliability, etc. The commercial product <a href=\"https:\/\/www.princexml.com\/\">Prince\nXML<\/a>
+        is written in Mercury.<\/p>\n\n<p>I''ve played around with Mercury in the
+        past but haven''t done anything\nsubstantial with it. Recently I picked it
+        up again. This post is a\nshort introduction to building Mercury, and some
+        example \"Hello World\"\nstyle programs to test the install.<\/p>\n\n<h2>Build<\/h2>\n\n<p>Mercury
+        is written in the Mercury language itself. This means it needs\na Mercury
+        compiler to bootstrap from. The way I got a build going from\nsource was to
+        download the source for a <a href=\"http:\/\/dl.mercurylang.org\/index.html\">release
+        of the\nday<\/a> version, build that, then\nuse that build to build the Mercury
+        source from github. The steps are\noutlined in the <a href=\"https:\/\/github.com\/Mercury-Language\/mercury\/blob\/master\/README.bootstrap\">README.bootstrap<\/a>\nfile,
+        but the following commands are the basic steps:<\/p>\n\n<pre><code>$ wget
+        http:\/\/dl.mercurylang.org\/rotd\/mercury-srcdist-rotd-2019-06-22.tar.gz\n$
+        tar xvf mercury-srcdist-rotd-2019-06-22.tar.gz\n$ cd mercury-srcdist-rotd-2019-06-22\n$
+        .\/configure --enable-minimal-install --prefix=\/tmp\/mercury\n$ make\n$ make
+        install\n$ cd ..\n$ export PATH=\/tmp\/mercury\/bin:$PATH\n<\/code><\/pre>\n\n<p>With
+        this minimal compiler the main source can be built. Mercury has a\nnumber
+        of backends, called ''grades'' in the documentation. Each of\nthese grades
+        makes a number of tradeoffs in terms of generated\ncode. They define the platform
+        (C, assembler, Java, etc), whether GC\nis used, what type of threading model
+        is available (if any), etc. The\n<a href=\"https:\/\/adventuresinmercury.blogspot.com\/\">Adventures
+        in Mercury<\/a>\nblog has an <a href=\"https:\/\/adventuresinmercury.blogspot.com\/2011\/11\/making-grade.html\">article
+        on some of the different\ngrades<\/a>. Building\nall of them can take a long
+        time - multiple hours - so it pays to\nlimit it if you don''t need some of
+        the backends.<\/p>\n\n<p>For my purposes I didn''t need the CSharp backend,
+        but wanted to\nexplore the others. I was ok with the time tradeoff of building
+        the\nsystem. To build from the <code>master<\/code> branch of the github repository
+        I\ndid the following steps:<\/p>\n\n<pre><","datamd5":"ce80c443ce82c2ce1f27765d8ea461a3","device":{"class":"Web
+        Server"},"domain":"mh7mkfvezts5j6yu.onion","forward":"mh7mkfvezts5j6yu.onion","hostname":"mh7mkfvezts5j6yu.onion","onion":"mh7mkfvezts5j6yu.onion","os":"Linux","osdistribution":"Ubuntu","osvendor":"Linux","port":"80","product":"NGINX","productvendor":"Igor
+        Sysoev","productversion":"1.10.3","protocol":"http","protocolversion":"1.1","reason":"OK","seen_date":"2019-08-08","source":"onionscan","status":"200","tag":["ok"],"tls":"false","transport":"tcp","url":"\/"},{"@category":"onionscan","@timestamp":"2019-08-06T08:25:04.000Z","@type":"doc","app":{"extract":{"domain":["princexml.com","github.com","mercurylang.org","blogspot.com"],"file":["atom.xml","rss.xml"],"hostname":["adventuresinmercury.blogspot.com","dl.mercurylang.org","github.com","www.mercurylang.org","www.princexml.com"],"url":["http:\/\/dl.mercurylang.org\/rotd\/mercury-srcdist-rotd-2019-06-22.tar.gz","https:\/\/github.com\/Mercury-Language\/mercury\/blob\/master\/README.bootstrap","https:\/\/www.princexml.com\/","http:\/\/dl.mercurylang.org\/index.html","https:\/\/www.mercurylang.org\/","https:\/\/adventuresinmercury.blogspot.com\/","https:\/\/adventuresinmercury.blogspot.com\/2011\/11\/making-grade.html"]},"http":{"bodymd5":"ceed964a59ce401e3b16cfe4f9993ed6","headermd5":"e316168414521f0da6d7f32f41642bd0","title":"Bluish
+        Coder"},"length":"4096"},"cpe":["cpe:\/a:igor_sysoev:nginx:1.10.3"],"cpecount":1,"data":"HTTP\/1.1
+        200 OK\r\nContent-Length: 95012\r\nETag: \"5d0f733f-17324\"\r\nDate: Tue,
+        06 Aug 2019 08:25:03 GMT\r\nLast-Modified: Sun, 23 Jun 2019 12:40:31 GMT\r\nServer:
+        nginx\/1.10.3 (Ubuntu)\r\nContent-Type: text\/html\r\nAccept-Ranges: bytes\r\nAge:
+        1\r\nConnection: keep-alive\r\n\r\n\n<!DOCTYPE html>\n<html>\n<head>\n   <meta
+        http-equiv=\"content-type\" content=\"text\/html; charset=utf-8\" \/>\n   <title>Bluish
+        Coder<\/title>\n   <meta name=\"author\" content=\"Chris Double\" \/>\n\n   <link
+        href=\".\/atom.xml\" rel=\"alternate\" title=\"Bluish Coder\" type=\"application\/atom+xml\"
+        \/>\n   <link rel=\"alternate\" type=\"application\/rss+xml\" title=\"RSS\"
+        href=\".\/rss.xml\"\/> \n\n   <link rel=\"stylesheet\" href=\".\/css\/screen.css\"
+        type=\"text\/css\" media=\"screen, projection\">\n   <link rel=\"stylesheet\"
+        href=\".\/css\/print.css\" type=\"text\/css\" media=\"print\">\n   <!--[if
+        lt IE 8]><link rel=\"stylesheet\" href=\".\/css\/ie.css\" type=\"text\/css\"
+        media=\"screen, projection\"><![endif]-->\n   <link rel=\"stylesheet\" href=\".\/css\/syntax.css\"
+        type=\"text\/css\" \/>\n   <link rel=\"stylesheet\" href=\".\/css\/bluishcoder.css\"
+        type=\"text\/css\">\n<\/head>\n<body>\n  <div class=\"container\">\n    <div
+        class=\"span-24 blog-header\">\n      <h1 id=\"blog-title\"><a href=\".\/index.html\">Bluish
+        Coder<\/a><\/h1>\n      <p id=\"blog-description\">Programming Languages,
+        Martials Arts and Computers. The Weblog of Chris Double.<\/p>\n    <\/div>\n    \n    <hr>\n    <div
+        class=\"span-20\">\n      \n\n  \n    <div class=\"post\">\n      <div class=\"span-2\"><p
+        class=\"small-heading\">2019-06-23<\/p><\/div>\n      <div class=\"span-18
+        last\">\n      <h2 class=\"post-title\"><a href=\".\/.\/2019\/06\/23\/getting-started-with-mercury.html\">Getting
+        Started with Mercury<\/a><\/h2>\n      <p><a href=\"https:\/\/www.mercurylang.org\/\">Mercury<\/a>
+        is a logic programming\nlanguage, similar to Prolog, but with static types.
+        It feels like a\ncombination of SML and Prolog at times. It was designed to
+        help with\nprogramming large systems - that is large programs, large teams
+        and\nbetter reliability, etc. The commercial product <a href=\"https:\/\/www.princexml.com\/\">Prince\nXML<\/a>
+        is written in Mercury.<\/p>\n\n<p>I''ve played around with Mercury in the
+        past but haven''t done anything\nsubstantial with it. Recently I picked it
+        up again. This post is a\nshort introduction to building Mercury, and some
+        example \"Hello World\"\nstyle programs to test the install.<\/p>\n\n<h2>Build<\/h2>\n\n<p>Mercury
+        is written in the Mercury language itself. This means it needs\na Mercury
+        compiler to bootstrap from. The way I got a build going from\nsource was to
+        download the source for a <a href=\"http:\/\/dl.mercurylang.org\/index.html\">release
+        of the\nday<\/a> version, build that, then\nuse that build to build the Mercury
+        source from github. The steps are\noutlined in the <a href=\"https:\/\/github.com\/Mercury-Language\/mercury\/blob\/master\/README.bootstrap\">README.bootstrap<\/a>\nfile,
+        but the following commands are the basic steps:<\/p>\n\n<pre><code>$ wget
+        http:\/\/dl.mercurylang.org\/rotd\/mercury-srcdist-rotd-2019-06-22.tar.gz\n$
+        tar xvf mercury-srcdist-rotd-2019-06-22.tar.gz\n$ cd mercury-srcdist-rotd-2019-06-22\n$
+        .\/configure --enable-minimal-install --prefix=\/tmp\/mercury\n$ make\n$ make
+        install\n$ cd ..\n$ export PATH=\/tmp\/mercury\/bin:$PATH\n<\/code><\/pre>\n\n<p>With
+        this minimal compiler the main source can be built. Mercury has a\nnumber
+        of backends, called ''grades'' in the documentation. Each of\nthese grades
+        makes a number of tradeoffs in terms of generated\ncode. They define the platform
+        (C, assembler, Java, etc), whether GC\nis used, what type of threading model
+        is available (if any), etc. The\n<a href=\"https:\/\/adventuresinmercury.blogspot.com\/\">Adventures
+        in Mercury<\/a>\nblog has an <a href=\"https:\/\/adventuresinmercury.blogspot.com\/2011\/11\/making-grade.html\">article
+        on some of the different\ngrades<\/a>. Building\nall of them can take a long
+        time - multiple hours - so it pays to\nlimit it if you don''t need some of
+        the backends.<\/p>\n\n<p>For my purposes I didn''t need the CSharp backend,
+        but wanted to\nexplore the others. I was ok with the time tradeoff of building
+        the\nsystem. To build from the <code>master<\/code> branch of the github repository
+        I\ndid the following steps:<\/p>","datamd5":"dc83734e53b63b2b74f1dc09f118e889","device":{"class":"Web
+        Server"},"domain":"mh7mkfvezts5j6yu.onion","forward":"mh7mkfvezts5j6yu.onion","hostname":"mh7mkfvezts5j6yu.onion","onion":"mh7mkfvezts5j6yu.onion","os":"Linux","osdistribution":"Ubuntu","osvendor":"Linux","port":"80","product":"NGINX","productvendor":"Igor
+        Sysoev","productversion":"1.10.3","protocol":"http","protocolversion":"1.1","reason":"OK","seen_date":"2019-08-06","source":"onionscan","status":"200","tag":["ok"],"tls":"false","transport":"tcp","url":"\/"},{"@category":"onionscan","@timestamp":"2019-07-31T09:01:48.000Z","@type":"doc","app":{"extract":{"domain":["blogspot.com","mercurylang.org","github.com","princexml.com"],"file":["atom.xml","rss.xml"],"hostname":["adventuresinmercury.blogspot.com","dl.mercurylang.org","github.com","www.mercurylang.org","www.princexml.com"],"url":["https:\/\/adventuresinmercury.blogspot.com\/2011\/11\/making-grade.html","https:\/\/www.princexml.com\/","http:\/\/dl.mercurylang.org\/index.html","https:\/\/adventuresinmercury.blogspot.com\/","https:\/\/www.mercurylang.org\/","http:\/\/dl.mercurylang.org\/rotd\/mercury-srcdist-rotd-2019-06-22.tar.gz","https:\/\/github.com\/Mercury-Language\/mercury\/blob\/master\/README.bootstrap"]},"http":{"bodymd5":"ceed964a59ce401e3b16cfe4f9993ed6","headermd5":"e316168414521f0da6d7f32f41642bd0","title":"Bluish
+        Coder"},"length":"4096"},"cpe":["cpe:\/a:igor_sysoev:nginx:1.10.3"],"cpecount":1,"data":"HTTP\/1.1
+        200 OK\r\nContent-Length: 95012\r\nETag: \"5d0f733f-17324\"\r\nDate: Wed,
+        31 Jul 2019 09:01:47 GMT\r\nLast-Modified: Sun, 23 Jun 2019 12:40:31 GMT\r\nServer:
+        nginx\/1.10.3 (Ubuntu)\r\nContent-Type: text\/html\r\nAccept-Ranges: bytes\r\nAge:
+        1\r\nConnection: keep-alive\r\n\r\n\n<!DOCTYPE html>\n<html>\n<head>\n   <meta
+        http-equiv=\"content-type\" content=\"text\/html; charset=utf-8\" \/>\n   <title>Bluish
+        Coder<\/title>\n   <meta name=\"author\" content=\"Chris Double\" \/>\n\n   <link
+        href=\".\/atom.xml\" rel=\"alternate\" title=\"Bluish Coder\" type=\"application\/atom+xml\"
+        \/>\n   <link rel=\"alternate\" type=\"application\/rss+xml\" title=\"RSS\"
+        href=\".\/rss.xml\"\/> \n\n   <link rel=\"stylesheet\" href=\".\/css\/screen.css\"
+        type=\"text\/css\" media=\"screen, projection\">\n   <link rel=\"stylesheet\"
+        href=\".\/css\/print.css\" type=\"text\/css\" media=\"print\">\n   <!--[if
+        lt IE 8]><link rel=\"stylesheet\" href=\".\/css\/ie.css\" type=\"text\/css\"
+        media=\"screen, projection\"><![endif]-->\n   <link rel=\"stylesheet\" href=\".\/css\/syntax.css\"
+        type=\"text\/css\" \/>\n   <link rel=\"stylesheet\" href=\".\/css\/bluishcoder.css\"
+        type=\"text\/css\">\n<\/head>\n<body>\n  <div class=\"container\">\n    <div
+        class=\"span-24 blog-header\">\n      <h1 id=\"blog-title\"><a href=\".\/index.html\">Bluish
+        Coder<\/a><\/h1>\n      <p id=\"blog-description\">Programming Languages,
+        Martials Arts and Computers. The Weblog of Chris Double.<\/p>\n    <\/div>\n    \n    <hr>\n    <div
+        class=\"span-20\">\n      \n\n  \n    <div class=\"post\">\n      <div class=\"span-2\"><p
+        class=\"small-heading\">2019-06-23<\/p><\/div>\n      <div class=\"span-18
+        last\">\n      <h2 class=\"post-title\"><a href=\".\/.\/2019\/06\/23\/getting-started-with-mercury.html\">Getting
+        Started with Mercury<\/a><\/h2>\n      <p><a href=\"https:\/\/www.mercurylang.org\/\">Mercury<\/a>
+        is a logic programming\nlanguage, similar to Prolog, but with static types.
+        It feels like a\ncombination of SML and Prolog at times. It was designed to
+        help with\nprogramming large systems - that is large programs, large teams
+        and\nbetter reliability, etc. The commercial product <a href=\"https:\/\/www.princexml.com\/\">Prince\nXML<\/a>
+        is written in Mercury.<\/p>\n\n<p>I''ve played around with Mercury in the
+        past but haven''t done anything\nsubstantial with it. Recently I picked it
+        up again. This post is a\nshort introduction to building Mercury, and some
+        example \"Hello World\"\nstyle programs to test the install.<\/p>\n\n<h2>Build<\/h2>\n\n<p>Mercury
+        is written in the Mercury language itself. This means it needs\na Mercury
+        compiler to bootstrap from. The way I got a build going from\nsource was to
+        download the source for a <a href=\"http:\/\/dl.mercurylang.org\/index.html\">release
+        of the\nday<\/a> version, build that, then\nuse that build to build the Mercury
+        source from github. The steps are\noutlined in the <a href=\"https:\/\/github.com\/Mercury-Language\/mercury\/blob\/master\/README.bootstrap\">README.bootstrap<\/a>\nfile,
+        but the following commands are the basic steps:<\/p>\n\n<pre><code>$ wget
+        http:\/\/dl.mercurylang.org\/rotd\/mercury-srcdist-rotd-2019-06-22.tar.gz\n$
+        tar xvf mercury-srcdist-rotd-2019-06-22.tar.gz\n$ cd mercury-srcdist-rotd-2019-06-22\n$
+        .\/configure --enable-minimal-install --prefix=\/tmp\/mercury\n$ make\n$ make
+        install\n$ cd ..\n$ export PATH=\/tmp\/mercury\/bin:$PATH\n<\/code><\/pre>\n\n<p>With
+        this minimal compiler the main source can be built. Mercury has a\nnumber
+        of backends, called ''grades'' in the documentation. Each of\nthese grades
+        makes a number of tradeoffs in terms of generated\ncode. They define the platform
+        (C, assembler, Java, etc), whether GC\nis used, what type of threading model
+        is available (if any), etc. The\n<a href=\"https:\/\/adventuresinmercury.blogspot.com\/\">Adventures
+        in Mercury<\/a>\nblog has an <a href=\"https:\/\/adventuresinmercury.blogspot.com\/2011\/11\/making-grade.html\">article
+        on some of the different\ngrades<\/a>. Building\nall of them can take a long
+        time - multiple hours - so it pays to\nlimit it if you don''t need some of
+        the backends.<\/p>\n\n<p>For my purposes I didn''t need the CSharp backend,
+        but wanted to\nexplore the others. I was ok with the time tradeoff of building
+        the\nsystem. To build from the <code>master<\/code> branch of the github repository
+        I\ndid the following steps:<\/p>","datamd5":"dc83734e53b63b2b74f1dc09f118e889","device":{"class":"Web
+        Server"},"domain":"mh7mkfvezts5j6yu.onion","forward":"mh7mkfvezts5j6yu.onion","hostname":"mh7mkfvezts5j6yu.onion","onion":"mh7mkfvezts5j6yu.onion","os":"Linux","osdistribution":"Ubuntu","osvendor":"Linux","port":"80","product":"NGINX","productvendor":"Igor
+        Sysoev","productversion":"1.10.3","protocol":"http","protocolversion":"1.1","reason":"OK","seen_date":"2019-07-31","source":"onionscan","status":"200","tag":["ok"],"tls":"false","transport":"tcp","url":"\/"}],"status":"ok","took":"0.127","total":6}'
+    http_version: 
+  recorded_at: Thu, 29 Aug 2019 12:06:39 GMT
+recorded_with: VCR 5.0.0

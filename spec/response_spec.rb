@@ -5,7 +5,7 @@ RSpec.describe Onyphe::Response do
     it "shoud return a genuine Hash" do
       hash = { first: { second: { third: 1 } } }
       json = hash.to_json
-      res = JSON.parse(json, object_class: Onyphe::Response)
+      res = JSON.parse(json, object_class: described_class)
 
       expect(res.first.second.third).to eq(1)
       h = res.to_h

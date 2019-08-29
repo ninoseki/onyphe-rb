@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.onyphe.io/api/search/inetnum/organization:%22OVH%20SAS%22?apikey=<API_KEY>&page=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - www.onyphe.io
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 29 Aug 2019 12:07:33 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '3965'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"count":10,"error":0,"max_page":1000,"myip":"<MY_IP>","page":1,"results":[{"@category":"inetnum","@timestamp":"2019-08-25T01:41:26.000Z","@type":"doc","asn":"AS16276","country":"FR","domain":"fr.eu","host":"pdc1-1-m0","information":["TRADING
+        CENTRAL"],"ip":"87.98.198.129","ipv6":"false","location":"48.8582,2.3387","netname":"TRADING-CENTRAL-OVH","organization":"OVH
+        SAS","reverse":"pdc1-1-m0.fr.eu","seen_date":"2019-08-25","source":"RIPE","subnet":"87.98.198.128\/27","tld":"eu"},{"@category":"inetnum","@timestamp":"2019-08-25T01:41:26.000Z","@type":"doc","asn":"AS16276","country":"FR","ipv6":"false","location":"48.8582,2.3387","netname":"FR-OVH-20060920","organization":"OVH
+        SAS","seen_date":"2019-08-25","source":"RIPE","subnet":"91.121.0.0\/16"},{"@category":"inetnum","@timestamp":"2019-08-25T01:41:26.000Z","@type":"doc","asn":"AS16276","country":"FR","domain":"fr.eu","host":"gsw-4-m0","information":["CONCEPT
+        SYSTEM INGENIERIE LOGICIEL"],"ip":"213.251.151.129","ipv6":"false","location":"48.8582,2.3387","netname":"CSIL-FR","organization":"OVH
+        SAS","reverse":"gsw-4-m0.fr.eu","seen_date":"2019-08-25","source":"RIPE","subnet":"213.251.151.128\/26","tld":"eu"},{"@category":"inetnum","@timestamp":"2019-08-25T01:41:26.000Z","@type":"doc","asn":"AS16276","country":"FR","domain":"ovh.net","host":"mutubackup53-10g-rbx","information":["OVH
+        SAS","Network infrastructure","http:\/\/www.ovh.com"],"ip":"213.251.188.1","ipv6":"false","location":"48.8582,2.3387","netname":"OVH","organization":"OVH
+        SAS","reverse":"mutubackup53-10g-rbx.ovh.net","seen_date":"2019-08-25","source":"RIPE","subnet":"213.251.188.0\/24","tld":"net"},{"@category":"inetnum","@timestamp":"2019-08-25T01:41:26.000Z","@type":"doc","asn":"AS16276","country":"FR","domain":"fr.eu","host":"gsw-3-m0","information":["Z
+        INFORMATIQUE"],"ip":"87.98.202.193","ipv6":"false","location":"48.8582,2.3387","netname":"zinformatique-gespro","organization":"OVH
+        SAS","reverse":"gsw-3-m0.fr.eu","seen_date":"2019-08-25","source":"RIPE","subnet":"87.98.202.192\/27","tld":"eu"},{"@category":"inetnum","@timestamp":"2019-08-25T01:41:26.000Z","@type":"doc","asn":"AS16276","country":"FR","information":["Keyade"],"ipv6":"false","location":"48.8582,2.3387","netname":"KEYADE-FR","organization":"OVH
+        SAS","seen_date":"2019-08-25","source":"RIPE","subnet":"213.251.158.160\/27"},{"@category":"inetnum","@timestamp":"2019-08-25T01:41:26.000Z","@type":"doc","asn":"AS16276","city":"Hellemmes-Lille","country":"FR","domain":"fr.eu","host":"gsw-4-m0","information":["Algoba
+        Systems"],"ip":"87.98.210.1","ipv6":"false","location":"50.6155,3.1135","netname":"ORPHEA-BACKBONE1","organization":"OVH
+        SAS","reverse":"gsw-4-m0.fr.eu","seen_date":"2019-08-25","source":"RIPE","subnet":"87.98.210.0\/25","tld":"eu"},{"@category":"inetnum","@timestamp":"2019-08-25T01:41:26.000Z","@type":"doc","asn":"AS16276","city":"Hellemmes-Lille","country":"FR","domain":"fr.eu","host":"gsw-4-m0","information":["Algoba
+        Systems"],"ip":"87.98.210.129","ipv6":"false","location":"50.6155,3.1135","netname":"ORPHEA-BACKBONE1","organization":"OVH
+        SAS","reverse":"gsw-4-m0.fr.eu","seen_date":"2019-08-25","source":"RIPE","subnet":"87.98.210.128\/26","tld":"eu"},{"@category":"inetnum","@timestamp":"2019-08-25T01:41:26.000Z","@type":"doc","asn":"AS16276","city":"Hellemmes-Lille","country":"FR","domain":"fr.eu","host":"gsw-3-m0","information":["PLAYMEDIA
+        SAS"],"ip":"87.98.209.161","ipv6":"false","location":"50.6155,3.1135","netname":"PLAYMEDIA-NET-OVH","organization":"OVH
+        SAS","reverse":"gsw-3-m0.fr.eu","seen_date":"2019-08-25","source":"RIPE","subnet":"87.98.209.160\/28","tld":"eu"},{"@category":"inetnum","@timestamp":"2019-08-25T01:41:26.000Z","@type":"doc","asn":"AS16276","country":"FR","information":["HQservers"],"ipv6":"false","location":"48.8582,2.3387","netname":"hqservers","organization":"OVH
+        SAS","seen_date":"2019-08-25","source":"RIPE","subnet":"213.186.51.0\/24"}],"status":"ok","took":"0.012","total":179151}'
+    http_version: 
+  recorded_at: Thu, 29 Aug 2019 12:07:33 GMT
+recorded_with: VCR 5.0.0
