@@ -5,7 +5,6 @@ require "bundler/setup"
 require 'coveralls'
 Coveralls.wear!
 
-require "dotenv/load"
 require "net/http"
 require "onyphe"
 require "rspec"

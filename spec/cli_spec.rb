@@ -111,7 +111,7 @@ RSpec.describe Onyphe::CLI, :vcr do
 
   context "when ONYPHE_API key is not set" do
     before do
-      allow(ENV).to receive(:[]).with('ONYPHE_API_KEY').and_return(nil)
+      allow(ENV).to receive(:[]).with("ONYPHE_API_KEY").and_return(nil)
     end
 
     it "should output an error message" do
