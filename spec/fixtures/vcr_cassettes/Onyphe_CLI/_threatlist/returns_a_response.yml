@@ -1,0 +1,68 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.onyphe.io/api/threatlist/206.81.18.195?apikey=<API_KEY>&page=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - www.onyphe.io
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 29 Aug 2019 12:06:46 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '3520'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"count":10,"error":0,"max_page":3,"myip":"<MY_IP>","page":1,"results":[{"@category":"threatlist","@timestamp":"2019-08-24T08:02:37.000Z","@type":"doc","asn":"AS14061","city":"Frankfurt
+        am Main","country":"DE","ipv6":"false","location":"50.1155,8.6842","organization":"DigitalOcean,
+        LLC","seen_date":"2019-08-24","source":"uceprotect","subnet":"206.81.16.0\/20","threatlist":"Uceprotect
+        - IP blacklist level-2"},{"@category":"threatlist","@timestamp":"2019-08-23T07:49:20.000Z","@type":"doc","asn":"AS14061","city":"Frankfurt
+        am Main","country":"DE","ipv6":"false","location":"50.1155,8.6842","organization":"DigitalOcean,
+        LLC","seen_date":"2019-08-23","source":"uceprotect","subnet":"206.81.16.0\/20","threatlist":"Uceprotect
+        - IP blacklist level-2"},{"@category":"threatlist","@timestamp":"2019-08-22T07:56:21.000Z","@type":"doc","asn":"AS14061","city":"Frankfurt
+        am Main","country":"DE","ipv6":"false","location":"50.1155,8.6842","organization":"DigitalOcean,
+        LLC","seen_date":"2019-08-22","source":"uceprotect","subnet":"206.81.16.0\/20","threatlist":"Uceprotect
+        - IP blacklist level-2"},{"@category":"threatlist","@timestamp":"2019-08-21T07:57:36.000Z","@type":"doc","asn":"AS14061","city":"Frankfurt
+        am Main","country":"DE","ipv6":"false","location":"50.1155,8.6842","organization":"DigitalOcean,
+        LLC","seen_date":"2019-08-21","source":"uceprotect","subnet":"206.81.16.0\/20","threatlist":"Uceprotect
+        - IP blacklist level-2"},{"@category":"threatlist","@timestamp":"2019-08-20T07:54:25.000Z","@type":"doc","asn":"AS14061","city":"Frankfurt
+        am Main","country":"DE","ipv6":"false","location":"50.1155,8.6842","organization":"DigitalOcean,
+        LLC","seen_date":"2019-08-20","source":"uceprotect","subnet":"206.81.16.0\/20","threatlist":"Uceprotect
+        - IP blacklist level-2"},{"@category":"threatlist","@timestamp":"2019-08-11T08:00:56.000Z","@type":"doc","asn":"AS14061","city":"Frankfurt
+        am Main","country":"DE","ipv6":"false","location":"50.1155,8.6842","organization":"DigitalOcean,
+        LLC","seen_date":"2019-08-11","source":"uceprotect","subnet":"206.81.16.0\/20","threatlist":"Uceprotect
+        - IP blacklist level-3"},{"@category":"threatlist","@timestamp":"2019-08-11T07:59:24.000Z","@type":"doc","asn":"AS14061","city":"Frankfurt
+        am Main","country":"DE","ipv6":"false","location":"50.1155,8.6842","organization":"DigitalOcean,
+        LLC","seen_date":"2019-08-11","source":"uceprotect","subnet":"206.81.16.0\/20","threatlist":"Uceprotect
+        - IP blacklist level-2"},{"@category":"threatlist","@timestamp":"2019-08-10T07:56:42.000Z","@type":"doc","asn":"AS14061","city":"Frankfurt
+        am Main","country":"DE","ipv6":"false","location":"50.1155,8.6842","organization":"DigitalOcean,
+        LLC","seen_date":"2019-08-10","source":"uceprotect","subnet":"206.81.16.0\/20","threatlist":"Uceprotect
+        - IP blacklist level-3"},{"@category":"threatlist","@timestamp":"2019-08-10T07:55:45.000Z","@type":"doc","asn":"AS14061","city":"Frankfurt
+        am Main","country":"DE","ipv6":"false","location":"50.1155,8.6842","organization":"DigitalOcean,
+        LLC","seen_date":"2019-08-10","source":"uceprotect","subnet":"206.81.16.0\/20","threatlist":"Uceprotect
+        - IP blacklist level-2"},{"@category":"threatlist","@timestamp":"2019-08-09T08:00:58.000Z","@type":"doc","asn":"AS14061","city":"Frankfurt
+        am Main","country":"DE","ipv6":"false","location":"50.1155,8.6842","organization":"DigitalOcean,
+        LLC","seen_date":"2019-08-09","source":"uceprotect","subnet":"206.81.16.0\/20","threatlist":"Uceprotect
+        - IP blacklist level-3"}],"status":"ok","took":"0.079","total":23}'
+    http_version: 
+  recorded_at: Thu, 29 Aug 2019 12:06:47 GMT
+recorded_with: VCR 5.0.0

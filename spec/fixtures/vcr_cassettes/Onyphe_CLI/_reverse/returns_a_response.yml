@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.onyphe.io/api/reverse/1.1.1.1?apikey=<API_KEY>&page=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - www.onyphe.io
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 29 Aug 2019 12:07:09 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '4521'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"count":10,"error":0,"max_page":3,"myip":"<MY_IP>","page":1,"results":[{"@category":"resolver","@timestamp":"2019-08-29T12:00:08.000Z","@type":"doc","asn":"AS13335","country":"AU","domain":"one.one","host":"one","hostname":"one.one.one.one","ip":"1.1.1.1","ipv6":"false","location":"-33.4940,143.2104","organization":"Cloudflare,
+        Inc.","reverse":"one.one.one.one","seen_date":"2019-08-29","source":"urlscan","subdomains":["one.one.one"],"subnet":"1.1.1.0\/24","tag":["hasreverse"],"tld":"one","type":"reverse"},{"@category":"resolver","@timestamp":"2019-08-28T23:54:16.000Z","@type":"doc","asn":"AS13335","country":"AU","domain":"one.one","host":"one","hostname":"one.one.one.one","ip":"1.1.1.1","ipv6":"false","location":"-33.4940,143.2104","organization":"Cloudflare,
+        Inc.","reverse":"one.one.one.one","seen_date":"2019-08-28","source":"urlscan","subdomains":["one.one.one"],"subnet":"1.1.1.0\/24","tag":["hasreverse"],"tld":"one","type":"reverse"},{"@category":"resolver","@timestamp":"2019-08-27T23:54:39.000Z","@type":"doc","asn":"AS13335","country":"AU","domain":"one.one","host":"one","hostname":"one.one.one.one","ip":"1.1.1.1","ipv6":"false","location":"-33.4940,143.2104","organization":"Cloudflare,
+        Inc.","reverse":"one.one.one.one","seen_date":"2019-08-27","source":"pastries","subdomains":["one.one.one"],"subnet":"1.1.1.0\/24","tag":["hasreverse"],"tld":"one","type":"reverse"},{"@category":"resolver","@timestamp":"2019-08-26T23:59:14.000Z","@type":"doc","asn":"AS13335","country":"AU","domain":"one.one","host":"one","hostname":"one.one.one.one","ip":"1.1.1.1","ipv6":"false","location":"-33.4940,143.2104","organization":"Cloudflare,
+        Inc.","reverse":"one.one.one.one","seen_date":"2019-08-26","source":"udpscan","subdomains":["one.one.one"],"subnet":"1.1.1.0\/24","tag":["hasreverse"],"tld":"one","type":"reverse"},{"@category":"resolver","@timestamp":"2019-08-25T23:59:48.000Z","@type":"doc","asn":"AS13335","country":"AU","domain":"one.one","host":"one","hostname":"one.one.one.one","ip":"1.1.1.1","ipv6":"false","location":"-33.4940,143.2104","organization":"Cloudflare,
+        Inc.","reverse":"one.one.one.one","seen_date":"2019-08-25","source":"udpscan","subdomains":["one.one.one"],"subnet":"1.1.1.0\/24","tag":["hasreverse"],"tld":"one","type":"reverse"},{"@category":"resolver","@timestamp":"2019-08-24T23:54:56.000Z","@type":"doc","asn":"AS13335","country":"AU","domain":"one.one","host":"one","hostname":"one.one.one.one","ip":"1.1.1.1","ipv6":"false","location":"-33.4940,143.2104","organization":"Cloudflare,
+        Inc.","reverse":"one.one.one.one","seen_date":"2019-08-24","source":"udpscan","subdomains":["one.one.one"],"subnet":"1.1.1.0\/24","tag":["hasreverse"],"tld":"one","type":"reverse"},{"@category":"resolver","@timestamp":"2019-08-23T23:50:48.000Z","@type":"doc","asn":"AS13335","country":"AU","domain":"one.one","host":"one","hostname":"one.one.one.one","ip":"1.1.1.1","ipv6":"false","location":"-33.4940,143.2104","organization":"Cloudflare,
+        Inc.","reverse":"one.one.one.one","seen_date":"2019-08-23","source":"udpscan","subdomains":["one.one.one"],"subnet":"1.1.1.0\/24","tag":["hasreverse"],"tld":"one","type":"reverse"},{"@category":"resolver","@timestamp":"2019-08-22T23:56:50.000Z","@type":"doc","asn":"AS13335","country":"AU","domain":"one.one","host":"one","hostname":"one.one.one.one","ip":"1.1.1.1","ipv6":"false","location":"-33.4940,143.2104","organization":"Cloudflare,
+        Inc.","reverse":"one.one.one.one","seen_date":"2019-08-22","source":"udpscan","subdomains":["one.one.one"],"subnet":"1.1.1.0\/24","tag":["hasreverse"],"tld":"one","type":"reverse"},{"@category":"resolver","@timestamp":"2019-08-21T23:59:53.000Z","@type":"doc","asn":"AS13335","country":"AU","domain":"one.one","host":"one","hostname":"one.one.one.one","ip":"1.1.1.1","ipv6":"false","location":"-33.4940,143.2104","organization":"Cloudflare,
+        Inc.","reverse":"one.one.one.one","seen_date":"2019-08-21","source":"udpscan","subdomains":["one.one.one"],"subnet":"1.1.1.0\/24","tag":["hasreverse"],"tld":"one","type":"reverse"},{"@category":"resolver","@timestamp":"2019-08-20T23:53:18.000Z","@type":"doc","asn":"AS13335","country":"AU","domain":"one.one","host":"one","hostname":"one.one.one.one","ip":"1.1.1.1","ipv6":"false","location":"-33.4940,143.2104","organization":"Cloudflare,
+        Inc.","reverse":"one.one.one.one","seen_date":"2019-08-20","source":"udpscan","subdomains":["one.one.one"],"subnet":"1.1.1.0\/24","tag":["hasreverse"],"tld":"one","type":"reverse"}],"status":"ok","took":"0.138","total":30}'
+    http_version: 
+  recorded_at: Thu, 29 Aug 2019 12:07:10 GMT
+recorded_with: VCR 5.0.0
