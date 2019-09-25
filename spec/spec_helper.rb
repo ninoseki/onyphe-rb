@@ -29,7 +29,11 @@ RSpec.configure do |config|
 end
 
 def myip
-  @myip ||= Net::HTTP.get(URI("https://api.ipify.org"))
+  @myip ||= [].tap do |out|
+    res = Net::HTTP.get(URI("https://ipinfo.io"))
+    json = JSON.parse(res)
+    out << json.dig("ip")
+  end.first
 end
 
 # just for memoize the my ip

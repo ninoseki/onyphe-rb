@@ -36,11 +36,12 @@ module Onyphe
     def request(req)
       Net::HTTP.start(HOST, 443, https_options) do |http|
         http_response = http.request(req)
-        if http_response.code == '200'
-          yield JSON.parse(http_response.body, object_class: Response)
-        else
-          raise(Error, "unsupported response code returned: #{http_response.code}")
-        end
+        raise(Error, "Unsupported response code returned: #{http_response.code}") unless http_response.code.start_with?("20")
+
+        response = JSON.parse(http_response.body, object_class: Response)
+        raise(Error, response.message) if response.error.to_i.positive?
+
+        yield response
       end
     end
 
