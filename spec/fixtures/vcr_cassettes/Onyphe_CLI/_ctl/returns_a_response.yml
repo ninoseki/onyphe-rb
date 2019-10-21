@@ -23,7 +23,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Thu, 29 Aug 2019 12:07:03 GMT
+      - Mon, 21 Oct 2019 06:30:45 GMT
       Content-Type:
       - application/json;charset=UTF-8
       Content-Length:
@@ -32,7 +32,7 @@ http_interactions:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"count":0,"error":0,"max_page":1,"myip":"<MY_IP>","page":1,"results":[],"status":"ok","took":"0.016","total":0}'
+      string: '{"count":0,"error":0,"max_page":1,"myip":"<MY_IP>","page":1,"results":[],"status":"ok","took":"0.021","total":0}'
     http_version: 
-  recorded_at: Thu, 29 Aug 2019 12:07:03 GMT
+  recorded_at: Mon, 21 Oct 2019 06:30:45 GMT
 recorded_with: VCR 5.0.0

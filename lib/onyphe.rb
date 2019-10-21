@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require "onyphe/response"
 require "onyphe/api"
 
 require "onyphe/validator"

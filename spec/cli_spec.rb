@@ -87,7 +87,7 @@ RSpec.describe Onyphe::CLI, :vcr do
 
   describe "#sniffer" do
     it "returns a response" do
-      res = capture(:stdout) { subject.start(%w(sniffer 217.138.28.194)) }
+      res = capture(:stdout) { subject.start(%w(sniffer 1.1.1.1)) }
       json = JSON.parse(res)
       expect(json).to be_a(Hash)
     end
@@ -103,7 +103,7 @@ RSpec.describe Onyphe::CLI, :vcr do
 
   describe "#threatlist" do
     it "returns a response" do
-      res = capture(:stdout) { subject.start(%w(threatlist 206.81.18.195)) }
+      res = capture(:stdout) { subject.start(%w(threatlist 1.1.1.1)) }
       json = JSON.parse(res)
       expect(json).to be_a(Hash)
     end
