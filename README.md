@@ -99,7 +99,7 @@ Enumerable style pagination is not supported at the present time.
 You can specify page index by passing `page` argument to the method.
 
 ```rb
-res = api.search.threatlist(country: "RU", page = 1)
+res = api.search.threatlist(country: "RU", page: 1)
 page = res.page
 max_page = res.max_page
 

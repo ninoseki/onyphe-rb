@@ -5,39 +5,39 @@ require "addressable/uri"
 module Onyphe
   module Clients
     class Search < Client
-      def datascan(params, page = 1)
+      def datascan(params, page: 1)
         search("datascan", params, page)
       end
 
-      def synscan(params, page = 1)
+      def synscan(params, page: 1)
         search("synscan", params, page)
       end
 
-      def inetnum(params, page = 1)
+      def inetnum(params, page: 1)
         search("inetnum", params, page)
       end
 
-      def threatlist(params, page = 1)
+      def threatlist(params, page: 1)
         search("threatlist", params, page)
       end
 
-      def pastries(params, page = 1)
+      def pastries(params, page: 1)
         search("pastries", params, page)
       end
 
-      def resolver(params, page = 1)
+      def resolver(params, page: 1)
         search("resolver", params, page)
       end
 
-      def sniffer(params, page = 1)
+      def sniffer(params, page: 1)
         search("sniffer", params, page)
       end
 
-      def ctl(params, page = 1)
+      def ctl(params, page: 1)
         search("ctl", params, page)
       end
 
-      def onionscan(params, page = 1)
+      def onionscan(params, page: 1)
         search("onionscan", params, page)
       end
 
