@@ -70,28 +70,6 @@ api.search.ctl(host: "vpn")
 api.search.onionscan("app.http.keywords": "dump")
 ```
 
-All the API response is wrapped by [OpenStruct](https://github.com/ruby/ostruct).
-
-It means you can access to a response through a property-like syntax.
-
-```rb
-res = api.sniffer("217.138.28.194")
-res.results.each do |result|
-  puts result.asn
-  puts result.ip
-  puts result.location
-  puts result.organization
-end
-```
-
-Or you can get a hash representative data by using `#to_h` method.
-
-```rb
-res = api.sniffer("217.138.28.194")
-p res.to_h
-# => {:count=>10, :error=>0, :max_page=>3, :myip=>"<MY_IP>", :page=>1, :results=>[{:@category=>"sniffer", :@timestamp=>"2018-11-15T00:35:37.000Z", :@type=>"doc", :asn=>"AS20952", :city=>"London", :country=>"GB", ...
-```
-
 #### Pagination
 
 Enumerable style pagination is not supported at the present time.
