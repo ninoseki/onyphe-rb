@@ -68,6 +68,10 @@ api.search.resolver(ip: "124.108.0.0/16")
 api.search.sniffer(ip: "14.164.0.0/14")
 api.search.ctl(host: "vpn")
 api.search.onionscan("app.http.keywords": "dump")
+
+api.alert.list
+api.alert.add(name: "foo", query:"bar", email: "foo@bar.com")
+api.alert.delete("id")
 ```
 
 #### Pagination

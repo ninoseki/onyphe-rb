@@ -22,6 +22,10 @@ module Onyphe
       @search ||= Clients::Search.new(api_key)
     end
 
+    def alert
+      @alert ||= Clients::Alert.new(api_key)
+    end
+
     private
 
     def _ctl

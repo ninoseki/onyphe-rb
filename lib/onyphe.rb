@@ -5,6 +5,7 @@ require "onyphe/api"
 require "onyphe/validator"
 
 require "onyphe/client"
+require "onyphe/clients/alert"
 require "onyphe/clients/ctl"
 require "onyphe/clients/datascan"
 require "onyphe/clients/forward"
