@@ -56,5 +56,14 @@ module Onyphe
       get = Net::HTTP::Get.new(url)
       request(get, &block)
     end
+
+    def post(path, params = {}, &block)
+      url = url_for(path)
+
+      post = Net::HTTP::Post.new(url)
+      post.set_form_data params
+      post["Authorization"] = "apikey #{@api_key}"
+      request(post, &block)
+    end
   end
 end
