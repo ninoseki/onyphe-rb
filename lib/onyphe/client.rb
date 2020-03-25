@@ -7,7 +7,8 @@ require "uri"
 module Onyphe
   class Client
     HOST = "www.onyphe.io"
-    URL = "https://#{HOST}/api"
+    VERSION = "v2"
+    URL = "https://#{HOST}/api/#{VERSION}"
 
     def initialize(api_key)
       @api_key = api_key
