@@ -2,26 +2,13 @@
 
 require "onyphe/api"
 
-require "onyphe/validator"
-
 require "onyphe/client"
-require "onyphe/clients/alert"
-require "onyphe/clients/ctl"
-require "onyphe/clients/datascan"
-require "onyphe/clients/forward"
-require "onyphe/clients/geoloc"
-require "onyphe/clients/inetnum"
-require "onyphe/clients/ip"
-require "onyphe/clients/md5"
-require "onyphe/clients/onionscan"
-require "onyphe/clients/pastries"
-require "onyphe/clients/reverse"
-require "onyphe/clients/sniffer"
-require "onyphe/clients/synscan"
-require "onyphe/clients/threatlist"
-require "onyphe/clients/search"
 
-require "onyphe/cli"
+require "onyphe/clients/alert"
+require "onyphe/clients/resolver"
+require "onyphe/clients/search"
+require "onyphe/clients/simple"
+require "onyphe/clients/summary"
 
 require "onyphe/version"
 
