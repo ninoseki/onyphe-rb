@@ -5,7 +5,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/ninoseki/onyphe-rb/badge.svg?branch=master)](https://coveralls.io/github/ninoseki/onyphe-rb?branch=master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/c4afca9e0ff94d11a53332c0598b868f)](https://www.codacy.com/app/ninoseki/onyphe-rb)
 
-[Onyphe](https://www.onyphe.io) API wrapper for Ruby.
+[Onyphe](https://www.onyphe.io) v2 API wrapper for Ruby.
 
 ## Installation
 
